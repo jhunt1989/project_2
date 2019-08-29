@@ -3,7 +3,7 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
-
+var $loginBtn = $("#loginBtn");
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveExample: function(example) {
@@ -29,6 +29,21 @@ var API = {
     });
   }
 };
+
+// $("#loginBtn").on("click", function(){
+//   console.log("log in!")
+//   $.ajax({
+//     type: "GET",
+//     url: "view",
+//     success: function(result){
+//       window.location.href="selectView.html"
+//     }
+//   })
+// })
+
+
+
+
 
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
