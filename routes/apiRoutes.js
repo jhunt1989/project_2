@@ -42,6 +42,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/supervisors/:id", function(req, res){
+    db.Supervisor.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbSupervisor){
+      res.json(dbSupervisor)
+    })
+  })
+
   app.get("/view/manager/table", function (req, res) {
     db.Job.findAll({}
     ).then(function (data) {
@@ -132,6 +142,18 @@ module.exports = function (app) {
           { id: req.body.id }
       }).then(function (dbJobsiteInfo) {
         res.json(dbJobsiteInfo)
+      })
+  })
+
+  app.put("/api/supervisors", function(req, res){
+
+    db.Supervisor.update(
+      req.body,
+      {
+        where:
+        {id: req.body.id}
+      }).then(function(dbSupervisorInfo){
+        res.json(dbSupervisorInfo)
       })
   })
 

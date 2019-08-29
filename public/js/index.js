@@ -140,6 +140,7 @@ $(function () {
       }).then(function () {
         console.log("We've calculated the profit received on this project")
         getJobsiteData(data.id, data.jobsite_id);
+        getSupervisorData(data.id, data.supervisor_id);
       })
 
     }
@@ -184,6 +185,19 @@ $(function () {
     })
   }
 
+  getSupervisorData = function(jobID, supervisorID) {
+    $.ajax("/api/jobs/" + jobID, {
+      type: "GET"
+    }).then(function(data){
+
+      $.ajax("/api/supervisors/" + supervisorID, {
+        type: "GET"
+      }).then(function(data2){
+        calculateSupervisorPerformance(data, data2)
+      })
+    })
+  }
+
   calculateJobsitePerformance = function (localData, globalData) {
     console.log("Local Data: " + JSON.stringify(localData));
     console.log("Global Data:" + JSON.stringify(globalData));
@@ -212,10 +226,43 @@ $(function () {
       data: jobsiteFinancialsObj
     }).then(function () {
       console.log("Jobsite Table has been updated!");
-      location.reload();
+      // location.reload();
     })
 
   }
+
+  calculateSupervisorPerformance = function(localData, globalData) {
+    console.log("Local Supervisor Data: " + JSON.stringify(localData));
+    console.log("Global Supervisor Data: " + JSON.stringify(globalData));
+
+    var localRevenue = localData.project_bid;
+    var localExpenses = localData.materialcosts + localData.wagecosts;
+    var localProfits = localData.profit;
+
+    var globalRevenue = globalData.jobs_revenue;
+    var globalExpenses = globalData.jobs_expenses;
+    var globalProfits = globalData.jobs_profits;
+
+    var newRevenue = localRevenue + globalRevenue;
+    var newExpenses = localExpenses + globalExpenses;
+    var newProfits = localProfits + globalProfits;
+
+    var supervisorFinancialsObj = {
+      id: globalData.id,
+      jobs_expenses: newExpenses,
+      jobs_revenue: newRevenue,
+      jobs_profits: newProfits
+    }
+
+    $.ajax("/api/supervisors/", {
+      type: "PUT",
+      data: supervisorFinancialsObj
+    }).then(function (){
+      console.log("Supervisor Table has been updated!")
+    })
+  }
+
+
   // app.get("/view/manager", function (req, res) {
   //   var supervisorArray = [];
   //   var jobsiteArray = [];
