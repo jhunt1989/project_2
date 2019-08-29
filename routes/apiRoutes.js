@@ -24,23 +24,36 @@ module.exports = function (app) {
 
   app.post("/api/jobs", function (req, res) {
 
-    db.Job.create(req.body).then(function(dbJobs) {
+    db.Job.create(req.body).then(function (dbJobs) {
       res.json(dbJobs);
     });
   });
 
   app.post("/api/jobsites", function (req, res) {
 
-    db.Jobsite.create(req.body).then(function(dbJobsites) {
+    db.Jobsite.create(req.body).then(function (dbJobsites) {
       res.json(dbJobsites);
     });
   });
 
   app.post("/api/supervisors", function (req, res) {
 
-    db.Supervisor.create(req.body).then(function(dbSupervisors) {
+    db.Supervisor.create(req.body).then(function (dbSupervisors) {
       res.json(dbSupervisors);
     });
+  });
+
+  app.put("/api/foreman", function (req, res) {
+
+    db.Job.update(
+      req.body,
+      {
+        where:
+          { id: req.body.id }
+      }).then(function (dbProjInfo) {
+        res.json(dbProjInfo);
+      });
+
   });
 
   //   // Create a new example
