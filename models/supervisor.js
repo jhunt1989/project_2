@@ -7,6 +7,10 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1]
             },
         }, 
+        specialties: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         jobs_expenses: {
             type: DataTypes.INTEGER,
             allowNull: true

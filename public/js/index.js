@@ -48,6 +48,27 @@ $(function () {
     )
   })
 
+  $("#create-supervisor").on("submit", function(event){
+    event.preventDefault();
+    console.log("i've been clicked");
+
+    var newSupervisor = {
+      supervisor_name: $("#supervisor-name").val().trim(),
+      specialties: $("#supervisor-specialties").val()
+      };
+
+    $.ajax("/api/supervisors/", {
+      type: "POST",
+      data: newSupervisor
+    }).then(
+      function() {
+        console.log("Created a new supervisor");
+        location.reload();
+      }
+    )
+  })
+
+
   $("#project-info").on("submit", function (event) {
     event.preventDefault();
     console.log("I've been clicked");
