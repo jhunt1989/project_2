@@ -25,7 +25,7 @@ $(function () {
 
   });
 
-  $("#create-jobsite").on("submit", function(event){
+  $("#create-jobsite").on("submit", function (event) {
     event.preventDefault();
     console.log("i've been clicked");
 
@@ -35,33 +35,33 @@ $(function () {
       primary_contact: $("#jobsite-primarycontact").val().trim(),
       phone_number: $("#jobsite-phone").val().trim(),
       email: $("#jobsite-email").val().trim()
-      };
+    };
 
     $.ajax("/api/jobsites/", {
       type: "POST",
       data: newJobsite
     }).then(
-      function() {
+      function () {
         console.log("Created a new jobsite");
         location.reload();
       }
     )
   })
 
-  $("#create-supervisor").on("submit", function(event){
+  $("#create-supervisor").on("submit", function (event) {
     event.preventDefault();
     console.log("i've been clicked");
 
     var newSupervisor = {
       supervisor_name: $("#supervisor-name").val().trim(),
       specialties: $("#supervisor-specialties").val()
-      };
+    };
 
     $.ajax("/api/supervisors/", {
       type: "POST",
       data: newSupervisor
     }).then(
-      function() {
+      function () {
         console.log("Created a new supervisor");
         location.reload();
       }
@@ -139,7 +139,7 @@ $(function () {
         data: profitObject
       }).then(function () {
         console.log("We've calculated the profit received on this project")
-        location.reload();
+        getJobsiteData(data.id, data.jobsite_id);
       })
 
     }
@@ -163,6 +163,105 @@ $(function () {
   //   )
   // }
   /////////////////////////////////////////////////////
+
+  //////////// Calculate Wages and Profits ////////////
+  getJobsiteData = function (jobID, jobsiteID) {
+    // var data1B;
+    // var data2B;
+    $.ajax("/api/jobs/" + jobID, {
+      type: "GET"
+    }).then(function (data) {
+      // console.log(data);
+      // console.log("current sales: " + data.sales);
+      $.ajax("/api/jobsites/" + jobsiteID, {
+        type: "GET"
+      }).then(function (data2) {
+
+        calculateJobsitePerformance(data, data2);
+      })
+
+
+    })
+  }
+
+  calculateJobsitePerformance = function (localData, globalData) {
+    console.log("Local Data: " + JSON.stringify(localData));
+    console.log("Global Data:" + JSON.stringify(globalData));
+
+    var localRevenue = localData.project_bid;
+    var localExpenses = localData.materialcosts + localData.wagecosts;
+    var localProfits = localData.profit;
+
+    var globalRevenue = globalData.location_revenue;
+    var globalExpenses = globalData.location_expenses;
+    var globalProfits = globalData.location_profits;
+
+    var newRevenue = localRevenue + globalRevenue;
+    var newExpenses = localExpenses + globalExpenses;
+    var newProfits = localProfits + globalProfits;
+
+    var jobsiteFinancialsObj = {
+      id: globalData.id,
+      location_expenses: newExpenses,
+      location_revenue: newRevenue,
+      location_profits: newProfits
+    }
+
+    $.ajax("/api/jobsites/", {
+      type: "PUT",
+      data: jobsiteFinancialsObj
+    }).then(function () {
+      console.log("Jobsite Table has been updated!");
+      location.reload();
+    })
+
+  }
+  // app.get("/view/manager", function (req, res) {
+  //   var supervisorArray = [];
+  //   var jobsiteArray = [];
+  //   var managerObject = {
+  //     supervisors: supervisorArray,
+  //     jobsites: jobsiteArray
+  //   }
+
+  //   db.Supervisor.findAll({}
+  //   ).then(function (data) {
+  //     for (i = 0; i < data.length; i++) {
+  //       (supervisorArray).push(data[i].dataValues);
+  //     }
+  //     db.Jobsite.findAll({}
+  //     ).then(function (data2) {
+  //       for (j = 0; j < data2.length; j++) {
+  //         (jobsiteArray).push(data2[j].dataValues);
+  //       }
+  //       res.render("managerView", managerObject)
+  //     })
+  //   })
+
+  // calculateWages = function (data) {
+  //   console.log("Calculate wages will be using this data: " + JSON.stringify(data))
+  //   var wages = data.hours * data.workers;
+  //   console.log(wages)
+  //   var wageObject = {
+  //     id: data.id,
+  //     wagecosts: wages
+  //   }
+
+  //   $.ajax("/api/foreman", {
+  //     type: "PUT",
+  //     data: wageObject
+  //   }).then(function () {
+  //     console.log("We've calculate wages and input that information for you into your table!");
+  //     calculateProfit(data, wages);
+  //   })
+
+  // }
+
+  calculateProfit = function (data, wages) {
+    console.log("Calculating Profits using this data: " + JSON.stringify(data))
+
+
+  };
 
 
 

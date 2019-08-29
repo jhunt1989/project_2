@@ -25,15 +25,15 @@ module.exports = function (sequelize, DataTypes) {
         },
         location_expenses: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            defaultValue: 0
         },
         location_revenue: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            defaultValue: 0
         } ,
         location_profits: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            defaultValue: 0
         },
         createdAt: {
             type: DataTypes.DATE(3),

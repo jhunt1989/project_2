@@ -13,15 +13,15 @@ module.exports = function (sequelize, DataTypes) {
         },
         jobs_expenses: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            defaultValue: 0
         },
         jobs_revenue: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            defaultValue: 0
         } ,
         jobs_profits: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            defaultValue: 0
         },
         createdAt: {
             type: DataTypes.DATE(3),

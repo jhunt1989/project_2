@@ -21,5 +21,5 @@ SELECT * FROM supervisors;
 
 INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, email, location_expenses, location_revenue, location_profits) VALUES ("Pennovation Center", "123 Main Street Phila, PA 19128", "John Thomas", "610-555-7895", "jthomas@gmail.com", 3000, 7000, 4000);
 INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, email, location_expenses, location_revenue, location_profits) VALUES ("Franklin Square", "456 Main Street Phila, PA 19128", "Tim Evans", "215-555-7895", "tevans@gmail.com", 4000, 9000, 5000);
-INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, email, location_expenses, location_revenue, location_profits) VALUES ("LaSalle College", "789 Main Street Phila, PA 19128", "Larry Johnson", "484-555-7895", "ljohnson@gmail.com", 5000, 10000. 5000);
+INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, email, location_expenses, location_revenue, location_profits) VALUES ("LaSalle College", "789 Main Street Phila, PA 19128", "Larry Johnson", "484-555-7895", "ljohnson@gmail.com", 5000, 10000, 5000);
 SELECT * FROM jobsites;
