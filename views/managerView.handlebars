@@ -19,34 +19,96 @@
     </div>
     <br>
     <div class="row add-item">
-            <div class="col text-center bg-primary" id="create-project">
-                <!-- Create new Job Section (Opens on click triggering a .show() for #create-project) -->
-                <h2>Create New Job</h2>
-                <form id="create-project">
-                    <div class="form-group">
-                        <!-- Drop down menu of supervisors to pick from -->
-                        <label for="supervisor-select"> Which supervisor will work this job?</label>
-                            <select data-placeholder="" class="form-control user-selection" id="new-proj-supervisor">
-                            <option value="1">1: Jack Hamill</option>
-                            <option value="2">2: Jordan Kane</option>
-                            <option value="3">3: Thomas Lynch</option>
-                            </select>
-                        <br>
-                        <!-- Drop down menu of jobsites to pick from -->
-                        <label for="jobsite-select"> Which jobsite will this job be at?</label>
-                            <select data-placeholder="" class="form-control user-selection" id="new-proj-jobsite">
-                            <option value="1">1: Pennovation Center</option>
-                            <option value="2">2: Franklin Square</option>
-                            <option value="3">3: LaSalle College High School</option>
-                            </select>
-                        <!-- Input for Project Bid amount -->
-                        <br>
-                        <label for="project-bid">Project Bid Amount:</label>
-                        <input type="text" id="project-bid">
-                    </div>
-                    <button type="submit">Create Project</button>
-                </form>
-            </div>
-        </div>
+        <div class="col text-center bg-success" id="create-project">
+            <!-- Create new Job Section (Opens on click triggering a .show() for #create-project) -->
+            <h2>Create New Job</h2>
+            <form id="create-project">
+                <div class="form-group">
+                    <!-- Drop down menu of supervisors to pick from -->
+                    <label for="supervisor-select"> Which supervisor will work this job?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="new-proj-supervisor">
+                        {{#each supervisors}}
 
+                        <option value="{{id}}">{{supervisor_name}}</option>
+
+                        {{/each}}
+                    </select>
+                    <br>
+                    <!-- Drop down menu of jobsites to pick from -->
+                    <label for="jobsite-select"> Which jobsite will this job be at?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="new-proj-jobsite">
+                        {{#each jobsites}}
+
+                        <option value="{{id}}">{{jobsite_name}}</option>
+
+
+                        {{/each}}
+                    </select>
+                    <!-- Input for Project Name -->
+                    <br>
+                    <label for="project-name">Project Name:</label>
+                    <input type="text" id="project-name">
+                    <!-- Input for Project Bid amount -->
+                    <br>
+                    <label for="project-bid">Project Bid Amount:</label>
+                    <input type="text" id="project-bid">
+                </div>
+                <button type="submit">Create Project</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row add-jobsite">
+        <div class="col text-center bg-warning" id="create-jobsite">
+            <h2>Create a new Jobsite</h2>
+            <form id="create-jobsite">
+
+                <div class="form-group">
+                    {{!-- Input for Jobsite name --}}
+                    <label for="jobsite-name">What will be the name of this Jobsite?</label>
+                    <input type="text" id="jobsite-name">
+                    <br>
+                    {{!--  Input for Jobsite address --}}
+                    <label for="jobsite-address">What is the address of this Jobsite?</label>
+                    <input type="text" id="jobsite-address">
+                    <br>
+                    {{!-- Input for Jobsite Primary Contact Person --}}
+                    <label for="jobsite-primarycontact">Who is the primary point of contact for this Jobsite?</label>
+                    <input type="text" id="jobsite-primarycontact">
+                    <br>
+                    {{!-- Input for Jobsite Phone Number --}}
+                    <label for="jobsite-phone">What is their phone number?</label>
+                    <input type="text" id="jobsite-phone">
+                    <br>
+                    {{!-- Input for Jobsite Email Address --}}
+                    <label for="jobsite-email">What is their email address?</label>
+                    <input type="text" id="jobsite-email">
+
+                </div>
+                <button type="submit">Create Job Site</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row add-jobsite">
+        <div class="col text-center bg-success" id="create-supervisor">
+            <h2>Create a new Supervisor</h2>
+            <form id="create-supervisor">
+
+                <div class="form-group">
+  
+                    {{!-- Input for Supervisor name --}}
+                    <label for="supervisor-name">What is the name of the new Supervisor?</label>
+                    <input type="text" id="supervisor-name">
+                    <br>
+                    {{!-- Input for Supervisor Specialties --}}
+                    <label for="supervisor-specialties">What are some of the specialties of this supervisor?</label>
+                    <input type="text" id="supervisor-specialties">
+                    <br>
+  
+                </div>
+                <button type="submit">Create Supervisor</button>
+            </form>
+        </div>
+    </div>
 </div>

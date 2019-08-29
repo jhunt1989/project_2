@@ -1,0 +1,40 @@
+<div class="container text-center">
+
+        <!-- Table to Display All Job Info -->
+        <div class="row">
+            <div class="col">
+                <div class="table">
+                    <h1>All Listed Supevisors</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Supervisor ID</th>
+                                <th>Supervisor Name</th>
+                                <th>Supervisor Specialties</th>
+                                <th>Jobs Expenses</th>
+                                <th>Jobs Revenues</th>
+                                <th>Jobs Profits</th>
+                                <th>Location Created</th>
+                                <th>Location Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each supervisors}}
+                            <tr>
+                                <td>{{id}}</td>
+                                <td>{{supervisor_name}}</td>
+                                <td>{{specialties}}</td>
+                                <td>${{jobs_expenses}}</td>
+                                <td>${{jobs_revenue}}</td>
+                                <td>${{jobs_profits}}</td>
+                                <td>{{createdAt}}</td>
+                                <td>{{updatedAt}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
