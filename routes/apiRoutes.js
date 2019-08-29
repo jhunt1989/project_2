@@ -8,6 +8,16 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/jobs/:id", function (req, res) {
+    db.Job.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbJobs) {
+      res.json(dbJobs.dataValues);
+    });
+  });
+
 
   app.get("/api/jobsites", function (req, res) {
     db.Jobsite.findAll({}).then(function (dbJobsites) {

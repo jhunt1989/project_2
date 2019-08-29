@@ -14,7 +14,9 @@
                                 <th>Project Bid</th>
                                 <th>Hours</th>
                                 <th>Workers</th>
+                                <th>Wages Paid</th>
                                 <th>Material Costs</th>
+                                <th>Job Profits</th>
                                 <th>Job Comments</th>
                                 <th>Job Created</th>
                                 <th>Last Updated</th>
@@ -26,10 +28,12 @@
                                 <td>{{id}}</td>
                                 <td>{{supervisor_id}}</td>
                                 <td>{{jobsite_id}}</td>
-                                <td>{{project_bid}}</td>
+                                <td>${{project_bid}}</td>
                                 <td>{{hours}}</td>
                                 <td>{{workers}}</td>
-                                <td>{{materialcosts}}</td>
+                                <td>${{wagecosts}}</td>
+                                <td>${{materialcosts}}</td>
+                                <td>${{profit}}</td>
                                 <td>{{jobcomments}}</td>
                                 <td>{{createdAt}}</td>
                                 <td>{{updatedAt}}</td>
