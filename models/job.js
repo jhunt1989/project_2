@@ -27,6 +27,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        wagecosts: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        profit: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         jobcomments: {
             type: DataTypes.TEXT,
             allowNull: true
