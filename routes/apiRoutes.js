@@ -45,10 +45,39 @@ module.exports = function (app) {
           projects: projectArray
         };
         // console.log(hbsObject);
-        res.render("tableView", hbsObject)
+        res.render("tableView", hbsObject);
       })
   })
 
+  app.get("/view/manager/table/jobsites", function(req, res){
+    db.Jobsite.findAll({
+    }).then(function(data){
+      var jobsiteArray = [];
+      for (i = 0; i < data.length; i++) {
+        (jobsiteArray).push(data[i].dataValues);
+      }
+
+      var hbsObject = {
+        jobsites: jobsiteArray
+      };
+      res.render("jobsiteTableView", hbsObject);
+    })
+  })
+
+  app.get("/view/manager/table/supervisors", function(req, res){
+    db.Supervisor.findAll({    
+    }).then(function(data) {
+      var supervisorArray = [];
+      for (i = 0; i < data.length; i++) {
+        (supervisorArray).push(data[i].dataValues);
+      }
+
+      var hbsObject = {
+        supervisors: supervisorArray
+      };
+      res.render("supervisorTableView", hbsObject);
+    })
+  })
 
   app.post("/api/jobs", function (req, res) {
 

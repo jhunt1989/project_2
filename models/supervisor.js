@@ -19,6 +19,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: true
         } ,
+        jobs_profits: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
         createdAt: {
             type: DataTypes.DATE(3),
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)')
