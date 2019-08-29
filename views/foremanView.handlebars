@@ -1,33 +1,39 @@
 <div class="container text-center">
     <div class="row">
         <div class="col">
-            <h3>Select A Job Location</h3>
+            <h3>Input Job Information</h3>
         </div>
     </div>
 
     <div class="row">
-        
-        <!-- Enter Job Data Form -->
-        <div class="col">
-            <form action="" method="POST">
-                <h3>Enter Current Location Expenses and Revenue</h3>
-                <input id="expenses" type="text" placeholder="Total Expenses">
-                <input id="revenue" type="text" placeholder="Total Revenue">
-                <br>
-                <button id="jobInfoBtn" type="button" class="btn">Submit Job Info</button>
-            </form>
-        </div>
 
-        <!-- Dropdown Menu -->
-        <div class="col">
-            <select name="selectLocation" id="selectJob">
-                <option value="default">Select Location</option>
-                <option value="upenn">University of Pennsylvania</option>
-                <option value="office">The Office</option>
-                <option value="myHouse">My House</option>
-                <option value="pennCenter">Pennovation Center</option>
-                <option value="imagine"> Imagination Land</option>
-            </select>
+        <!-- Enter Job Data Form -->
+        <div class="col bg-info" id="project-info-form">
+            <form id="project-info">
+                <div class="form-group">
+                    {{!-- Inquiry to enter project ID --}}
+                    <label for="project-select">Enter your Project ID</label>
+                    <input type="text" id="project-id">
+                    <br>
+                    {{!-- Hours on Job --}}
+                    <label for="project-hours">How many hours did this job take?</label>
+                    <input type="text" id="project-hours">
+                    <br>
+                    {{!-- Workers on Job --}}
+                    <label for="project-workers">How many workers were on this job?</label>
+                    <input type="text" id="project-workers">
+                    <br>
+                    {{!-- Material Costs --}}
+                    <label for="project-workers">What is your estimated cost of materials?</label>
+                    <input type="text" id="project-materialcosts">
+                    <br>
+                    {{!-- Job Comments --}}
+                    <label for="project-jobcomments">Do you have any comments for this job?</label>
+                    <input type="text" id="project-jobcomments">
+                </div>
+                {{!-- Submit Info  --}}
+                <button type="submit">Input Project Data</button>
+            </form>
         </div>
 
     </div>
