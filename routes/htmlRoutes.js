@@ -26,10 +26,6 @@ module.exports = function (app) {
     res.render("foremanView")
   });
 
-  app.get("/view/manager/table", function (req, res) {
-    res.render("tableView")
-  });
-
 
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function (req, res) {

@@ -22,6 +22,24 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/view/manager/table", function (req, res) {
+    db.Job.findAll({}
+      ).then(function(data){
+        // console.log(data[0].dataValues);
+        var projectArray = [];
+        for (i = 0; i < data.length; i++) {
+          (projectArray).push(data[i].dataValues);
+        }
+        // console.log(dataArray)
+        var hbsObject = {
+          projects: projectArray
+        };
+        // console.log(hbsObject);
+        res.render("tableView", hbsObject)
+      })
+  })
+
+
   app.post("/api/jobs", function (req, res) {
 
     db.Job.create(req.body).then(function (dbJobs) {
