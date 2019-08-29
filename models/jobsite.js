@@ -6,7 +6,23 @@ module.exports = function (sequelize, DataTypes) {
             validate: {
                 len: [1]
             },
-        }, 
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        primary_contact: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        phone_number: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: true,
+        },
         location_expenses: {
             type: DataTypes.INTEGER,
             allowNull: true

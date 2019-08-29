@@ -25,6 +25,29 @@ $(function () {
 
   });
 
+  $("#create-jobsite").on("submit", function(event){
+    event.preventDefault();
+    console.log("i've been clicked");
+
+    var newJobsite = {
+      jobsite_name: $("#jobsite-name").val().trim(),
+      address: $("#jobsite-address").val().trim(),
+      primary_contact: $("#jobsite-primarycontact").val().trim(),
+      phone_number: $("#jobsite-phone").val().trim(),
+      email: $("#jobsite-email").val().trim()
+      };
+
+    $.ajax("/api/jobsites/", {
+      type: "POST",
+      data: newJobsite
+    }).then(
+      function() {
+        console.log("Created a new jobsite");
+        location.reload();
+      }
+    )
+  })
+
   $("#project-info").on("submit", function (event) {
     event.preventDefault();
     console.log("I've been clicked");
