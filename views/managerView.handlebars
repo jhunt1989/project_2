@@ -27,18 +27,27 @@
                         <!-- Drop down menu of supervisors to pick from -->
                         <label for="supervisor-select"> Which supervisor will work this job?</label>
                             <select data-placeholder="" class="form-control user-selection" id="new-proj-supervisor">
-                            <option value="1">1: Jack Hamill</option>
-                            <option value="2">2: Jordan Kane</option>
-                            <option value="3">3: Thomas Lynch</option>
+                            {{#each supervisors}}
+                            
+                            <option value="{{id}}">{{supervisor_name}}</option>
+                         
+                            {{/each}}
                             </select>
                         <br>
                         <!-- Drop down menu of jobsites to pick from -->
                         <label for="jobsite-select"> Which jobsite will this job be at?</label>
                             <select data-placeholder="" class="form-control user-selection" id="new-proj-jobsite">
-                            <option value="1">1: Pennovation Center</option>
-                            <option value="2">2: Franklin Square</option>
-                            <option value="3">3: LaSalle College High School</option>
+                            {{#each jobsites}}
+
+                            <option value="{{id}}">{{jobsite_name}}</option>
+                            
+                            
+                            {{/each}}
                             </select>
+                        <!-- Input for Project Name -->
+                        <br>
+                        <label for="project-name">Project Name:</label>
+                        <input type="text" id="project-name">
                         <!-- Input for Project Bid amount -->
                         <br>
                         <label for="project-bid">Project Bid Amount:</label>

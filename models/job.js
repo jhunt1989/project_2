@@ -10,6 +10,10 @@ module.exports = function (sequelize, DataTypes) {
             defaultValue: 0,
             allowNull: false
         },
+        project_name: {
+            type: DataTypes.STRING,
+            defaultValue: 0
+        },
         project_bid: {
             type: DataTypes.INTEGER,
             defaultValue: 0,

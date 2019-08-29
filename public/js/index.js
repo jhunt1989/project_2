@@ -7,7 +7,8 @@ $(function () {
     var newProject = {
       supervisor_id: parseInt($("#new-proj-supervisor").val()),
       jobsite_id: parseInt($("#new-proj-jobsite").val()),
-      project_bid: parseInt($("#project-bid").val().trim())
+      project_bid: parseInt($("#project-bid").val().trim()),
+      project_name: $("#project-name").val().trim()
     };
 
     $.ajax("/api/jobs", {
@@ -45,7 +46,7 @@ $(function () {
     })
 
     //////////// Calculate Wages and Profits ////////////
-    calculateData = function() {
+    calculateData = function () {
       $.ajax("/api/jobs/" + projectInfo.id, {
         type: "GET"
       }).then(function (data) {
@@ -55,7 +56,7 @@ $(function () {
       })
     }
 
-    calculateWages = function(data) {
+    calculateWages = function (data) {
       console.log("Calculate wages will be using this data: " + JSON.stringify(data))
       var wages = data.hours * data.workers;
       console.log(wages)
@@ -67,14 +68,14 @@ $(function () {
       $.ajax("/api/foreman", {
         type: "PUT",
         data: wageObject
-      }).then(function(){
+      }).then(function () {
         console.log("We've calculate wages and input that information for you into your table!");
         calculateProfit(data, wages);
       })
 
     }
 
-    calculateProfit = function(data, wages) {
+    calculateProfit = function (data, wages) {
       console.log("Calculating Profits using this data: " + JSON.stringify(data))
       var revenue = data.project_bid;
       var expenses = wages + data.materialcosts;
@@ -92,34 +93,33 @@ $(function () {
       $.ajax("/api/foreman", {
         type: "PUT",
         data: profitObject
-      }).then(function(){
+      }).then(function () {
         console.log("We've calculated the profit received on this project")
         location.reload();
       })
 
     }
 
-    // function calculateNewSales(currentSales) {
-    //   var newSales = currentSales + itemPrice;
-
-    //   var productSales = {
-    //     sales: newSales
-    //   }
-
-    //   $.ajax("/api/menu/order/" + itemData, {
-    //     type: "PUT",
-    //     data: productSales
-    //   }).then(
-    //     function () {
-    //       console.log("Successfully updates sales");
-    //       // location.reload();
-    //     }
-    //   )
-    // }
-    /////////////////////////////////////////////////////
-
-    console.log(projectInfo)
-
   })
+  // function calculateNewSales(currentSales) {
+  //   var newSales = currentSales + itemPrice;
+
+  //   var productSales = {
+  //     sales: newSales
+  //   }
+
+  //   $.ajax("/api/menu/order/" + itemData, {
+  //     type: "PUT",
+  //     data: productSales
+  //   }).then(
+  //     function () {
+  //       console.log("Successfully updates sales");
+  //       // location.reload();
+  //     }
+  //   )
+  // }
+  /////////////////////////////////////////////////////
+
+
 
 });

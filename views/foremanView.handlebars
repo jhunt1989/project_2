@@ -12,8 +12,12 @@
             <form id="project-info">
                 <div class="form-group">
                     {{!-- Inquiry to enter project ID --}}
-                    <label for="project-select">Enter your Project ID</label>
-                    <input type="text" id="project-id">
+                    <label for="project-select">Select your project</label>
+                    <select data-placeholder="" class="form-control user-selection" id="project-id">
+                    {{#each projects}}
+                    <option value="{{id}}">{{project_name}}</option>
+                    {{/each}}
+                    </select>
                     <br>
                     {{!-- Hours on Job --}}
                     <label for="project-hours">How many hours did this job take?</label>
