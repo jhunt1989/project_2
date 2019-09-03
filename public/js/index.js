@@ -1,15 +1,18 @@
 $(function () {
 
+
   // hides all forms on page load
   $("#create-project").hide();
   $("#create-jobsite").hide();
   $("#create-supervisor").hide();
+
 
   //on click event for login button
   $("#loginBtn").on("click", function (event) {
     event.preventDefault();
     console.log("you have successfully logged in");
     window.location.replace("/view")
+
   })
 
   //from select view page, on click for manager button
@@ -17,6 +20,7 @@ $(function () {
     event.preventDefault();
     console.log("you are now in manager view");
     window.location.replace("/view/manager")
+
   })
 
   //from select view page, on click for foreman button
@@ -24,6 +28,7 @@ $(function () {
     event.preventDefault();
     console.log("you are now in foreman view");
     window.location.replace("/view/foreman")
+
   })
 
   //from manager view, on click to add job form
@@ -54,11 +59,13 @@ $(function () {
   })
 
 
+
   //from manager view, on click view jobs button
   $("#viewJobs").on("click", function (event) {
     event.preventDefault();
     console.log("view list of all jobs");
     window.location.replace("/view/manager/table")
+
   })
 
   //from manager view, on click for view all jobsites
@@ -66,6 +73,7 @@ $(function () {
     event.preventDefault();
     console.log("view list of all jobsites");
     window.location.replace("/view/manager/table/jobsites")
+
   })
 
   //from manager view, on click for view supervisors
@@ -73,6 +81,7 @@ $(function () {
     event.preventDefault();
     console.log("view list of supervisors");
     window.location.replace("/view/manager/table/supervisors")
+
   })
 
 
