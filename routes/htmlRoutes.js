@@ -21,9 +21,11 @@ module.exports = function (app) {
   app.get("/view/manager", function (req, res) {
     var supervisorArray = [];
     var jobsiteArray = [];
+    var jobsArray = [];
     var managerObject = {
       supervisors: supervisorArray,
-      jobsites: jobsiteArray
+      jobsites: jobsiteArray,
+      jobs: jobsArray
     }
 
     db.Supervisor.findAll({}
@@ -36,9 +38,16 @@ module.exports = function (app) {
         for (j = 0; j < data2.length; j++) {
           (jobsiteArray).push(data2[j].dataValues);
         }
+        db.Job.findAll({}
+        ).then(function(data3) {
+          for (k = 0; k < data3.length; k++) {
+            (jobsArray).push(data3[k].dataValues);
+          }
+        })
         res.render("managerView", managerObject)
       })
     })
+
 
 
 

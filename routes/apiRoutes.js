@@ -18,6 +18,17 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/jobs/search/:id", function(req, res){
+    db.Job.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbJobs){
+
+      res.json(dbJobs)
+    })
+  })
+
   app.get("/api/jobsites/:id", function (req, res) {
     db.Jobsite.findOne({
       where: {
@@ -28,12 +39,27 @@ module.exports = function (app) {
     })
   })
 
+  app.get("/api/jobsites/search/:id", function(req, res){
+    db.Jobsite.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbJobsite){
+
+      res.json(dbJobsite)
+    })
+  })
+
+  
+
 
   app.get("/api/jobsites", function (req, res) {
     db.Jobsite.findAll({}).then(function (dbJobsites) {
       res.json(dbJobsites);
     });
   });
+
+
 
 
   app.get("/api/supervisors", function (req, res) {
@@ -51,6 +77,19 @@ module.exports = function (app) {
       res.json(dbSupervisor)
     })
   })
+
+  app.get("/api/supervisors/search/:id", function(req, res){
+    db.Supervisor.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbSupervisor){
+
+      res.json(dbSupervisor)
+    })
+  })
+
+
 
   app.get("/view/manager/table", function (req, res) {
     db.Job.findAll({}

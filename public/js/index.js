@@ -5,6 +5,9 @@ $(function () {
   $("#create-project").hide();
   $("#create-jobsite").hide();
   $("#create-supervisor").hide();
+  $(".search-jobs-row").hide();
+  $(".search-jobsite-row").hide();
+  $(".search-supervisor-row").hide();
 
 
   //on click event for login button
@@ -38,27 +41,85 @@ $(function () {
     $("#create-project").show();
     $("#create-jobsite").hide();
     $("#create-supervisor").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+
+
+
   })
 
   //from manager view, on click to add jobsite form
   $("#addJobsite").on("click", function (event) {
     event.preventDefault();
     console.log("show form to create a new job");
+
     $("#create-jobsite").show();
-    $("#create-supervisor").hide();
     $("#create-project").hide();
+    $("#create-supervisor").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+
+
   })
 
   //from manager view, on click to add jobsite form
   $("#addSuper").on("click", function (event) {
     event.preventDefault();
     console.log("show form to create a new job");
+
     $("#create-supervisor").show();
-    $("#create-jobsite").hide();
     $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+
+
   })
 
 
+  $("#searchJobs").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to search through jobs");
+
+    $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+    $(".search-jobs-row").show();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+  
+
+  })
+
+  $("#searchSites").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to search through jobsites");
+
+    $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").show();
+    $(".search-supervisor-row").hide();
+  
+
+  })
+
+  $("#searchSuper").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to search through supervisors")
+
+    $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").show();
+  
+  })
 
   //from manager view, on click view jobs button
   $("#viewJobs").on("click", function (event) {
@@ -249,6 +310,90 @@ $(function () {
   //   )
   // }
   /////////////////////////////////////////////////////
+
+  ///////////////////////////////////////////////////////
+  ////////////////// SEARCH INDIVIDUALS ////////////////
+
+  $("#search-supervisor-form").on("submit", function (event) {
+    event.preventDefault();
+    console.log("You've searched for Supervisor ID: " + $("#supervisor-search").val());
+    var superSearch = {
+      id: parseInt($("#supervisor-search").val())
+    }
+
+    $.ajax("/api/supervisors/search/" + superSearch.id, {
+      type: "GET"
+    }).then(function (searchResult) {
+      console.log(searchResult);
+      $("#super-id").text(searchResult.id);
+      $("#super-name").text(searchResult.supervisor_name);
+      $("#super-expenses").text(searchResult.jobs_expenses);
+      $("#super-revenue").text(searchResult.jobs_revenue);
+      $("#super-profits").text(searchResult.jobs_profits);
+    })
+
+  })
+
+  $("#search-jobsite-form").on("submit", function (event) {
+    event.preventDefault();
+    console.log("You've searched for Jobsite ID: " + $("#jobsite-search").val());
+
+    var jobsiteSearch = {
+      id: parseInt($("#jobsite-search").val())
+    }
+
+    $.ajax("/api/jobsites/search/" + jobsiteSearch.id, {
+      type: "GET"
+    }).then(function (searchResult) {
+      console.log(searchResult);
+      $("#jobsite-id").text(searchResult.id);
+      $("#jobsite-title").text(searchResult.jobsite_name);
+      $("#jobsite-expenses").text(searchResult.location_expenses);
+      $("#jobsite-revenue").text(searchResult.location_revenue);
+      $("#jobsite-profits").text(searchResult.location_profits);
+    })
+
+  })
+
+
+  $("#search-jobs-form").on("submit", function (event) {
+    event.preventDefault();
+    console.log("You've searched for Job ID: " + $("#jobs-search").val());
+    var jobsSearch = {
+      id: parseInt($("#jobs-search").val())
+    }
+
+    $.ajax("/api/jobs/search/" + jobsSearch.id, {
+      type: "GET"
+    }).then(function (searchResult) {
+      console.log(searchResult);
+      $("#jobs-id").text(searchResult.id);
+      $("#jobs-title").text(searchResult.project_name);
+      $("#jobs-bid").text(searchResult.project_bid);
+      $("#jobs-materialcosts").text(searchResult.materialcosts);
+      $("#jobs-wagecosts").text(searchResult.wagecosts);
+      $("#jobs-profit").text(searchResult.profit);
+    })
+
+  })
+
+
+
+
+
+
+
+  //////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
 
   //////////// Calculate Wages and Profits ////////////
   getJobsiteData = function (jobID, jobsiteID) {
