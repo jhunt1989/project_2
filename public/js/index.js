@@ -1,6 +1,11 @@
 $(function () {
 
-  // $("#create-project").hide();
+
+  // hides all forms on page load
+  $("#create-project").hide();
+  $("#create-jobsite").hide();
+  $("#create-supervisor").hide();
+
 
   //on click event for login button
   $("#loginBtn").on("click", function (event) {
@@ -16,7 +21,6 @@ $(function () {
     console.log("you are now in manager view");
     window.location.replace("/view/manager")
 
-
   })
 
   //from select view page, on click for foreman button
@@ -26,6 +30,35 @@ $(function () {
     window.location.replace("/view/foreman")
 
   })
+
+  //from manager view, on click to add job form
+  $("#createJob").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a new job");
+    $("#create-project").show();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+  })
+
+  //from manager view, on click to add jobsite form
+  $("#addJobsite").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a new job");
+    $("#create-jobsite").show();
+    $("#create-supervisor").hide();
+    $("#create-project").hide();
+  })
+
+  //from manager view, on click to add jobsite form
+  $("#addSuper").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a new job");
+    $("#create-supervisor").show();
+    $("#create-jobsite").hide();
+    $("#create-project").hide();
+  })
+
+
 
   //from manager view, on click view jobs button
   $("#viewJobs").on("click", function (event) {
