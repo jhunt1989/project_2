@@ -6,53 +6,49 @@
     </div>
     <!-- Buttons for Manager Options -->
     <div class="row bg-secondary">
-        <div class="col">
+        <div class="col-4">
             <button id="createJob" type="button" class="btn">Create Job</button>
         </div>
 
-
-        <div class="col">
+        <div class="col-4">
             <button id="addJobsite" type="button" class="btn">Add Jobsite</button>
         </div>
 
-        <div class="col">
-            <button id="addSuper" type="button" class="btn">Add Supervisor</button>
-        </div>
-
-        <div class="col">
-            <button id="viewJobs" type="button" class="btn">View Jobs</button>
-        </div>
-
-        <div class="col">
-            <button id="viewJobsites" type="button" class="btn">View Jobsites</button>
-        </div>
-
-        <div class="col">
-
-
-        <div class="col">
-            <button id="addJobsite" type="button" class="btn">Add Jobsite</button>
-        </div>
-
-        <div class="col">
+        <div class="col-4">
             <button id="addSuper" type="button" class="btn">Add Supervisor</button>
         </div>
 
 
-        <div class="col">
+        <div class="col-4">
             <button id="viewJobs" type="button" class="btn">View Jobs</button>
         </div>
 
-        <div class="col">
+        <div class="col-4">
             <button id="viewJobsites" type="button" class="btn">View Jobsites</button>
         </div>
 
-        <div class="col">
-
+        <div class="col-4">
             <button id="viewSuper" type="button" class="btn">View Supervisors</button>
         </div>
+
+        <div class="col-4">
+            <button id="searchJobs" type="button" class="btn">Search Jobs</button>
+        </div>
+
+        <div class="col-4">
+            <button id="searchSites" type="button" class="btn">Search Jobsites</button>
+        </div>
+
+        <div class="col-4">
+            <button id="searchSuper" type="button" class="btn">Search Supervisors</button>
+        </div>
+
+
     </div>
     <br>
+
+
+    {{!-- CREATE NEW JOB TABLE --}}
     <div class="row add-item">
         <div class="col text-center bg-success" id="create-project">
             <!-- Create new Job Section (Opens on click triggering a .show() for #create-project) -->
@@ -93,6 +89,7 @@
         </div>
     </div>
 
+    {{!-- ADD JOBSITE TABLE --}}
     <div class="row add-jobsite">
         <div class="col text-center bg-warning" id="create-jobsite">
             <h2>Create a new Jobsite</h2>
@@ -125,7 +122,8 @@
         </div>
     </div>
 
-    <div class="row add-jobsite">
+    {{!-- ADD SUPERVISOR TABLE --}}
+    <div class="row add-supervisor">
         <div class="col text-center bg-success" id="create-supervisor">
             <h2>Create a new Supervisor</h2>
             <form id="create-supervisor">
@@ -146,4 +144,135 @@
             </form>
         </div>
     </div>
+    <br>
+
+    {{!-- SEARCH SUPERVISOR TABLE --}}
+    <div class="row search-supervisor-row bg-info">
+        <div class="col-3 text-center" id="search-supervisor-col">
+            <form id="search-supervisor-form">
+                <div class="form-group">
+                    <label for="supervisor-search"> Which supervisor would you like to search?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="supervisor-search">
+                        {{#each supervisors}}
+
+                        <option value="{{id}}">{{supervisor_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Search Supervisor</button>
+            </form>
+        </div>
+        <div class="col-9 supervisor-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Supervisor ID</th>
+                        <th>Supervisor Name</th>
+                        <th>Jobs Expenses</th>
+                        <th>Jobs Revenues</th>
+                        <th>Jobs Profits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="super-id"></td>
+                        <td id="super-name"></td>
+                        <td id="super-expenses"></td>
+                        <td id="super-revenue"></td>
+                        <td id="super-profits"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <br>
+
+    {{!--  SEARCH JOBSITE TABLE --}}
+    <div class="row search-jobsite-row bg-warning">
+        <div class="col-3 text-center" id="search-jobsite-col">
+            <form id="search-jobsite-form">
+                <div class="form-group">
+                    <label for="jobsite-search"> Which jobsite would you like to search?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="jobsite-search">
+                        {{#each jobsites}}
+
+                        <option value="{{id}}">{{jobsite_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Search Jobsite</button>
+            </form>
+        </div>
+        <div class="col-9 jobsite-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Jobsite ID</th>
+                        <th>Jobsite Name</th>
+                        <th>Jobsite Total Expenses</th>
+                        <th>Jobsite Total Revenue</th>
+                        <th>Jobsite Total Profits</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="jobsite-id"></td>
+                        <td id="jobsite-title"></td>
+                        <td id="jobsite-expenses"></td>
+                        <td id="jobsite-revenue"></td>
+                        <td id="jobsite-profits"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <br>
+    {{!--  SEARCH JOBS TABLE --}}
+    <div class="row search-jobs-row bg-info">
+        <div class="col-3 text-center" id="search-jobs-col">
+            <form id="search-jobs-form">
+                <div class="form-group">
+                    <label for="jobs-search"> Which jobsite would you like to search?</label>
+                    <select data-placeholder="" class="form-control user-selection" id="jobs-search">
+                        {{#each jobs}}
+
+                        <option value="{{id}}">{{project_name}}</option>
+
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit">Search Jobs</button>
+            </form>
+        </div>
+        <div class="col-9 jobs-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Job ID</th>
+                        <th>Job Name</th>
+                        <th>Job Bid</th>
+                        <th>Material Costs </th>
+                        <th>Wages Spent</th>
+                        <th>Job profit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="jobs-id"></td>
+                        <td id="jobs-title"></td>
+                        <td id="jobs-bid"></td>
+                        <td id="jobs-materialcosts"></td>
+                        <td id="jobs-wagecosts"></td>
+                        <td id="jobs-profit"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </div>
