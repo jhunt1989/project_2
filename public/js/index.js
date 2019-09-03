@@ -1,5 +1,55 @@
 $(function () {
 
+  //on click event for login button
+  $("#loginBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you have successfully logged in");
+    window.location.replace("/view")
+
+  })
+
+  //from select view page, on click for manager button
+  $("#managerBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you are now in manager view");
+    window.location.replace("/view/manager")
+
+
+  })
+
+  //from select view page, on click for foreman button
+  $("#foremanBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you are now in foreman view");
+    window.location.replace("/view/foreman")
+
+  })
+
+   //from manager view, on click view jobs button
+   $("#viewAllJobs").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of all jobs");
+    window.location.replace("/view/manager/table")
+
+  })
+
+   //from manager view, on click for view all jobsites
+   $("#viewJobsites").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of all jobsites");
+    window.location.replace("/view/manager/table/jobsites")
+
+  })
+
+   //from manager view, on click for view supervisors
+   $("#viewSuper").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of supervisors");
+    window.location.replace("/view/manager/table/supervisors")
+
+  })
+
+
   $("#create-project").on("submit", function (event) {
     event.preventDefault();
     console.log("i've been clicked");
