@@ -1,5 +1,81 @@
 $(function () {
 
+  // hides all forms on page load
+  $("#create-project").hide();
+  $("#create-jobsite").hide();
+  $("#create-supervisor").hide();
+
+  //on click event for login button
+  $("#loginBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you have successfully logged in");
+    window.location.replace("/view")
+  })
+
+  //from select view page, on click for manager button
+  $("#managerBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you are now in manager view");
+    window.location.replace("/view/manager")
+  })
+
+  //from select view page, on click for foreman button
+  $("#foremanBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you are now in foreman view");
+    window.location.replace("/view/foreman")
+  })
+
+  //from manager view, on click to add job form
+  $("#createJob").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a new job");
+    $("#create-project").show();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+  })
+
+  //from manager view, on click to add jobsite form
+  $("#addJobsite").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a new job");
+    $("#create-jobsite").show();
+    $("#create-supervisor").hide();
+    $("#create-project").hide();
+  })
+
+  //from manager view, on click to add jobsite form
+  $("#addSuper").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a new job");
+    $("#create-supervisor").show();
+    $("#create-jobsite").hide();
+    $("#create-project").hide();
+  })
+
+
+  //from manager view, on click view jobs button
+  $("#viewJobs").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of all jobs");
+    window.location.replace("/view/manager/table")
+  })
+
+  //from manager view, on click for view all jobsites
+  $("#viewJobsites").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of all jobsites");
+    window.location.replace("/view/manager/table/jobsites")
+  })
+
+  //from manager view, on click for view supervisors
+  $("#viewSuper").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of supervisors");
+    window.location.replace("/view/manager/table/supervisors")
+  })
+
+
   $("#create-project").on("submit", function (event) {
     event.preventDefault();
     console.log("i've been clicked");
@@ -185,14 +261,14 @@ $(function () {
     })
   }
 
-  getSupervisorData = function(jobID, supervisorID) {
+  getSupervisorData = function (jobID, supervisorID) {
     $.ajax("/api/jobs/" + jobID, {
       type: "GET"
-    }).then(function(data){
+    }).then(function (data) {
 
       $.ajax("/api/supervisors/" + supervisorID, {
         type: "GET"
-      }).then(function(data2){
+      }).then(function (data2) {
         calculateSupervisorPerformance(data, data2)
       })
     })
@@ -231,7 +307,7 @@ $(function () {
 
   }
 
-  calculateSupervisorPerformance = function(localData, globalData) {
+  calculateSupervisorPerformance = function (localData, globalData) {
     console.log("Local Supervisor Data: " + JSON.stringify(localData));
     console.log("Global Supervisor Data: " + JSON.stringify(globalData));
 
@@ -257,7 +333,7 @@ $(function () {
     $.ajax("/api/supervisors/", {
       type: "PUT",
       data: supervisorFinancialsObj
-    }).then(function (){
+    }).then(function () {
       console.log("Supervisor Table has been updated!")
     })
   }

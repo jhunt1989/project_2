@@ -7,14 +7,27 @@
     <!-- Buttons for Manager Options -->
     <div class="row bg-secondary">
         <div class="col">
+            <button id="createJob" type="button" class="btn">Create Job</button>
+        </div>
 
-            <button id="createJob" type="button" class="btn">Create A New Job</button>
-        </div>
         <div class="col">
-            <button id="lookUpJob" type="button" class="btn">Look Up Jobs</button>
+            <button id="addJobsite" type="button" class="btn">Add Jobsite</button>
         </div>
+
         <div class="col">
-            <button id="viewAllJobs" type="button" class="btn">View All Jobs</button>
+            <button id="addSuper" type="button" class="btn">Add Supervisor</button>
+        </div>
+
+        <div class="col">
+            <button id="viewJobs" type="button" class="btn">View Jobs</button>
+        </div>
+
+        <div class="col">
+            <button id="viewJobsites" type="button" class="btn">View Jobsites</button>
+        </div>
+
+        <div class="col">
+            <button id="viewSuper" type="button" class="btn">View Supervisors</button>
         </div>
     </div>
     <br>
@@ -96,7 +109,7 @@
             <form id="create-supervisor">
 
                 <div class="form-group">
-  
+
                     {{!-- Input for Supervisor name --}}
                     <label for="supervisor-name">What is the name of the new Supervisor?</label>
                     <input type="text" id="supervisor-name">
@@ -105,7 +118,7 @@
                     <label for="supervisor-specialties">What are some of the specialties of this supervisor?</label>
                     <input type="text" id="supervisor-specialties">
                     <br>
-  
+
                 </div>
                 <button type="submit">Create Supervisor</button>
             </form>
