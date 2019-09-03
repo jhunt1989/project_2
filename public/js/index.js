@@ -1,5 +1,7 @@
 $(function () {
 
+// $("#create-project").hide();
+
   //on click event for login button
   $("#loginBtn").on("click", function (event) {
     event.preventDefault();
@@ -26,7 +28,7 @@ $(function () {
   })
 
    //from manager view, on click view jobs button
-   $("#viewAllJobs").on("click", function (event) {
+   $("#viewJobs").on("click", function (event) {
     event.preventDefault();
     console.log("view list of all jobs");
     window.location.replace("/view/manager/table")
