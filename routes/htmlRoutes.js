@@ -28,18 +28,15 @@ module.exports = function (app) {
       jobs: jobsArray
     }
 
-    db.Supervisor.findAll({}
-    ).then(function (data) {
+    db.Supervisor.findAll({}).then(function (data) {
       for (i = 0; i < data.length; i++) {
         (supervisorArray).push(data[i].dataValues);
       }
-      db.Jobsite.findAll({}
-      ).then(function (data2) {
+      db.Jobsite.findAll({}).then(function (data2) {
         for (j = 0; j < data2.length; j++) {
           (jobsiteArray).push(data2[j].dataValues);
         }
-        db.Job.findAll({}
-        ).then(function(data3) {
+        db.Job.findAll({}).then(function (data3) {
           for (k = 0; k < data3.length; k++) {
             (jobsArray).push(data3[k].dataValues);
           }
@@ -61,8 +58,7 @@ module.exports = function (app) {
   });
 
   app.get("/view/foreman", function (req, res) {
-    db.Job.findAll({}
-    ).then(function (data) {
+    db.Job.findAll({}).then(function (data) {
       // console.log(data[0].dataValues);
       var projectArray = [];
       for (i = 0; i < data.length; i++) {
@@ -77,17 +73,17 @@ module.exports = function (app) {
     });
   });
 
-    // // Load example page and pass in an example by id
-    // app.get("/example/:id", function (req, res) {
-    //   db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-    //     res.render("example", {
-    //       example: dbExample
-    //     });
-    //   });
-    // });
+  // // Load example page and pass in an example by id
+  // app.get("/example/:id", function (req, res) {
+  //   db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
+  //     res.render("example", {
+  //       example: dbExample
+  //     });
+  //   });
+  // });
 
-    // // Render 404 page for any unmatched routes
-    // app.get("*", function (req, res) {
-    //   res.render("404");
-    // });
-  };
+  // // Render 404 page for any unmatched routes
+  // app.get("*", function (req, res) {
+  //   res.render("404");
+  // });
+};
