@@ -1,20 +1,42 @@
- <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h3>Select Your Page View</h3>
-            </div>
+<div class="container">
+
+    <div class="row">
+        <div class="col text-center">
+            <h3>Select Your Page View</h3>
         </div>
-        <br>
-        <br>
-        <!-- Buttons to Select Page View -->
-        <div class="row text-center">
-            <div class="col">
-                
-                <button id="managerBtn" type="button" class="btn">Manager</button>
-            </div>
-            {{!-- <div class="col">
-                <button id="foremanBtn" type="button" class="btn">Foreman</button>
-            </div> --}}
+    </div>
+    <br>
+    <br>
+
+    {{!-- <!-- Buttons to Select Page View --> --}}
+    <div class="row text-center">
+        <div class="col">
+
+            <button id="managerBtn" type="button" class="btn">Manager</button>
         </div>
+        <div class="col">
+            <button id="foremanBtn" type="button" class="btn">Foreman</button>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    {{!-- Display Map of Complete/Incomplete Jobs --}}
+    <div class="row">
+        <div class="col text-center">
+            <h3>Job Completion Status</h3>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="row">
+        <div class="col">
+            <div id="map"></div>
+        </div>
+    </div>
+
+
+
 
 </div>

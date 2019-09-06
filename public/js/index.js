@@ -1,5 +1,4 @@
-$(function () {
-
+$(document).ready(function () {
 
   // hides all forms on page load
   $("#create-project").hide();
@@ -90,7 +89,7 @@ $(function () {
     $(".search-jobs-row").show();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").hide();
-  
+
 
   })
 
@@ -104,7 +103,7 @@ $(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").show();
     $(".search-supervisor-row").hide();
-  
+
 
   })
 
@@ -118,7 +117,7 @@ $(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").show();
-  
+
   })
 
   //from manager view, on click view jobs button
@@ -539,7 +538,5 @@ $(function () {
 
 
   };
-
-
 
 });

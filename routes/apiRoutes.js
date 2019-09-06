@@ -18,12 +18,12 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/jobs/search/:id", function(req, res){
+  app.get("/api/jobs/search/:id", function (req, res) {
     db.Job.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function (dbJobs){
+    }).then(function (dbJobs) {
 
       res.json(dbJobs)
     })
@@ -39,18 +39,18 @@ module.exports = function (app) {
     })
   })
 
-  app.get("/api/jobsites/search/:id", function(req, res){
+  app.get("/api/jobsites/search/:id", function (req, res) {
     db.Jobsite.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function (dbJobsite){
+    }).then(function (dbJobsite) {
 
       res.json(dbJobsite)
     })
   })
 
-  
+
 
 
   app.get("/api/jobsites", function (req, res) {
@@ -68,22 +68,22 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/supervisors/:id", function(req, res){
+  app.get("/api/supervisors/:id", function (req, res) {
     db.Supervisor.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function (dbSupervisor){
+    }).then(function (dbSupervisor) {
       res.json(dbSupervisor)
     })
   })
 
-  app.get("/api/supervisors/search/:id", function(req, res){
+  app.get("/api/supervisors/search/:id", function (req, res) {
     db.Supervisor.findOne({
       where: {
         id: req.params.id
       }
-    }).then(function (dbSupervisor){
+    }).then(function (dbSupervisor) {
 
       res.json(dbSupervisor)
     })
@@ -92,8 +92,7 @@ module.exports = function (app) {
 
 
   app.get("/view/manager/table", function (req, res) {
-    db.Job.findAll({}
-    ).then(function (data) {
+    db.Job.findAll({}).then(function (data) {
       // console.log(data[0].dataValues);
       var projectArray = [];
       for (i = 0; i < data.length; i++) {
@@ -109,8 +108,7 @@ module.exports = function (app) {
   })
 
   app.get("/view/manager/table/jobsites", function (req, res) {
-    db.Jobsite.findAll({
-    }).then(function (data) {
+    db.Jobsite.findAll({}).then(function (data) {
       var jobsiteArray = [];
       for (i = 0; i < data.length; i++) {
         (jobsiteArray).push(data[i].dataValues);
@@ -124,8 +122,7 @@ module.exports = function (app) {
   })
 
   app.get("/view/manager/table/supervisors", function (req, res) {
-    db.Supervisor.findAll({
-    }).then(function (data) {
+    db.Supervisor.findAll({}).then(function (data) {
       var supervisorArray = [];
       for (i = 0; i < data.length; i++) {
         (supervisorArray).push(data[i].dataValues);
@@ -162,38 +159,38 @@ module.exports = function (app) {
   app.put("/api/foreman", function (req, res) {
 
     db.Job.update(
-      req.body,
-      {
-        where:
-          { id: req.body.id }
+      req.body, {
+        where: {
+          id: req.body.id
+        }
       }).then(function (dbProjInfo) {
-        res.json(dbProjInfo);
-      });
+      res.json(dbProjInfo);
+    });
 
   });
 
   app.put("/api/jobsites", function (req, res) {
 
     db.Jobsite.update(
-      req.body,
-      {
-        where:
-          { id: req.body.id }
+      req.body, {
+        where: {
+          id: req.body.id
+        }
       }).then(function (dbJobsiteInfo) {
-        res.json(dbJobsiteInfo)
-      })
+      res.json(dbJobsiteInfo)
+    })
   })
 
-  app.put("/api/supervisors", function(req, res){
+  app.put("/api/supervisors", function (req, res) {
 
     db.Supervisor.update(
-      req.body,
-      {
-        where:
-        {id: req.body.id}
-      }).then(function(dbSupervisorInfo){
-        res.json(dbSupervisorInfo)
-      })
+      req.body, {
+        where: {
+          id: req.body.id
+        }
+      }).then(function (dbSupervisorInfo) {
+      res.json(dbSupervisorInfo)
+    })
   })
 
   //   // Create a new example
