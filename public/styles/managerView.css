@@ -42,3 +42,39 @@ body {
 #searchSuper {
     margin: 5px;
 }
+
+#create-project {
+    background-color: #c49a67;
+    border: solid 1px black;
+    padding-bottom: 20px;
+}
+
+#create-jobsite {
+    background-color: #c49a67;
+    border: solid 1px black;
+    padding-bottom: 20px;
+}
+
+#create-supervisor {
+    background-color: #c49a67;
+    border: solid 1px black;
+    padding-bottom: 20px;
+}
+
+#search-supervisor {
+    background-color: #c49a67;
+    border: solid 1px black;
+    padding-bottom: 20px;
+}
+
+#search-jobsite {
+    background-color: #c49a67;
+    border: solid 1px black;
+    padding-bottom: 20px;
+}
+
+#search-jobs {
+    background-color: #c49a67;
+    border: solid 1px black;
+    padding-bottom: 20px;
+}
