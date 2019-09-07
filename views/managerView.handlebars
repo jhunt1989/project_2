@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/styles/managerView.css">
 <div class="container text-center">
     <div class="row">
         <div class="col">
@@ -5,7 +6,7 @@
         </div>
     </div>
     <!-- Buttons for Manager Options -->
-    <div class="row bg-secondary">
+    <div class="row" id="btnBox">
         <div class="col-4">
             <button id="createJob" type="button" class="btn">Create Job</button>
         </div>
@@ -50,7 +51,7 @@
 
     {{!-- CREATE NEW JOB TABLE --}}
     <div class="row add-item">
-        <div class="col text-center bg-success" id="create-project">
+        <div class="col text-center" id="create-project">
             <!-- Create new Job Section (Opens on click triggering a .show() for #create-project) -->
             <h2>Create New Job</h2>
             <form id="create-project">
@@ -91,7 +92,7 @@
 
     {{!-- ADD JOBSITE TABLE --}}
     <div class="row add-jobsite">
-        <div class="col text-center bg-warning" id="create-jobsite">
+        <div class="col text-center" id="create-jobsite">
             <h2>Create a new Jobsite</h2>
             <form id="create-jobsite">
 
@@ -124,7 +125,7 @@
 
     {{!-- ADD SUPERVISOR TABLE --}}
     <div class="row add-supervisor">
-        <div class="col text-center bg-success" id="create-supervisor">
+        <div class="col text-center" id="create-supervisor">
             <h2>Create a new Supervisor</h2>
             <form id="create-supervisor">
 
@@ -147,7 +148,7 @@
     <br>
 
     {{!-- SEARCH SUPERVISOR TABLE --}}
-    <div class="row search-supervisor-row bg-info">
+    <div class="row search-supervisor-row" id="search-supervisor">
         <div class="col-3 text-center" id="search-supervisor-col">
             <form id="search-supervisor-form">
                 <div class="form-group">
@@ -191,7 +192,7 @@
     <br>
 
     {{!--  SEARCH JOBSITE TABLE --}}
-    <div class="row search-jobsite-row bg-warning">
+    <div class="row search-jobsite-row" id="search-jobsite">
         <div class="col-3 text-center" id="search-jobsite-col">
             <form id="search-jobsite-form">
                 <div class="form-group">
@@ -233,7 +234,7 @@
 
     <br>
     {{!--  SEARCH JOBS TABLE --}}
-    <div class="row search-jobs-row bg-info">
+    <div class="row search-jobs-row" id="search-jobs">
         <div class="col-3 text-center" id="search-jobs-col">
             <form id="search-jobs-form">
                 <div class="form-group">

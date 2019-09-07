@@ -1,0 +1,13 @@
+body {
+    background-color: #E1F0AC;
+}
+
+#tableBody {
+    background-color: #f4e1c9;
+    border: solid 1px black;
+    margin-top: 20px;
+}
+
+#managerBtn {
+    margin-top: 20px;
+}
