@@ -1,0 +1,44 @@
+body {
+    background-color: #E1F0AC;
+}
+
+#btnBox {
+    background-color: #f4e1c9;
+    border: solid 1px black;
+}
+
+#createJob {
+    margin: 5px;
+}
+
+#addJobsite {
+    margin: 5px;
+}
+
+#addSuper {
+    margin: 5px;
+}
+
+#viewJobs {
+    margin: 5px;
+}
+
+#viewJobsites {
+    margin: 5px;
+}
+
+#viewSuper {
+    margin: 5px;
+}
+
+#searchJobs {
+    margin: 5px;
+}
+
+#searchSites {
+    margin: 5px;
+}
+
+#searchSuper {
+    margin: 5px;
+}
