@@ -1,0 +1,10 @@
+body {
+    background-color: #E1F0AC;
+}
+
+#project-info-form {
+    background-color: #f4e1c9;
+    border: solid 1px black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
