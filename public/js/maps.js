@@ -77,7 +77,7 @@ function initMap() {
             console.log("number of address: " + numAddress)
 
             for (i = 0; i < numAddress; i++) {
-                var locationProfits = searchResults[i].location_profits;
+                var profits = searchResults[i].location_profits;
                 var name = searchResults[i].jobsite_name;
                 var contact = searchResults[i].primary_contact;
                 var phone = searchResults[i].phone_number;
@@ -87,10 +87,11 @@ function initMap() {
                     name,
                     contact,
                     phone,
-                    email
+                    email,
+                    profits
                 }
 
-                console.log(`location${i} profits: ${locationProfits}`)
+                // console.log(`location${i} profits: ${locationProfits}`)
                 geocoder.geocode({ 'address': searchResults[i].address }, makeCallback(markerObj))
 
                 function makeCallback(Obj) {
@@ -117,10 +118,10 @@ function initMap() {
 
 
                             // Checking for custom icon
-                            // if (locationProfits > 0 || locationProfits < 0) {
-                            //     // Setting icon image
-                            //     marker.setIcon("http://maps.google.com/mapfiles/kml/paddle/grn-circle.png");
-                            // }
+                            if (jobsite.profits > 0 || jobsite.profits < 0) {
+                                // Setting icon image
+                                marker.setIcon("http://maps.google.com/mapfiles/kml/paddle/grn-circle.png");
+                            }
                     
 
 
