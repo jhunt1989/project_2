@@ -51,9 +51,9 @@ function initMap() {
 
     // Listen for click on map
 
-    google.maps.event.addListener(map, 'click', function (event) {
-        addMarker({ coords: event.latLng });
-    })
+    // google.maps.event.addListener(map, 'click', function (event) {
+    //     addMarker({ coords: event.latLng });
+    // })
 
 
 
@@ -66,6 +66,8 @@ function initMap() {
         //   });
 
 
+        markerArray = [];
+
 
         $.ajax("/api/jobsites", {
             type: "GET"
@@ -75,26 +77,61 @@ function initMap() {
             console.log("number of address: " + numAddress)
 
             for (i = 0; i < numAddress; i++) {
-                locationProfits = searchResults[i].location_profits;
-                console.log(`location${i} profits: ${locationProfits}`)
-                geocoder.geocode({
-                    'address': searchResults[i].address
-                }, function (results, status) {
-                    if (status == 'OK') {
-                        console.log(results[0].geometry.location)
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: results[0].geometry.location
-                        })
+                var profits = searchResults[i].location_profits;
+                var name = searchResults[i].jobsite_name;
+                var contact = searchResults[i].primary_contact;
+                var phone = searchResults[i].phone_number;
+                var email = searchResults[i].email;
+                // createInfoWindow(infoWindowObj);
+                markerObj = {
+                    name,
+                    contact,
+                    phone,
+                    email,
+                    profits
+                }
 
-                        // Checking for custom icon
-                        // if (locationProfits > 0 || locationProfits < 0) {
-                        //     // Setting icon image
-                        //     marker.setIcon("http://maps.google.com/mapfiles/kml/paddle/grn-circle.png");
-                        // }
+                // console.log(`location${i} profits: ${locationProfits}`)
+                geocoder.geocode({ 'address': searchResults[i].address }, makeCallback(markerObj))
+
+                function makeCallback(Obj) {
+                    var geoCodeCallback = function(results, status) {
+                            var jobsite = Obj;
+                            // console.log(i);
+                          
+                            var marker = new google.maps.Marker({
+                                map: map,
+                                position: results[0].geometry.location
+
+                            })
+
+                            var infoWindow = new google.maps.InfoWindow({
+                                content: `<h3>${jobsite.name}</h3>
+                                            <h4>Contact: ${jobsite.contact}<h4>
+                                            <a href="tel:${jobsite.phone}">Phone:${jobsite.phone}</a>
+                                            <a href="mailto:${jobsite.email}">Email:${jobsite.email}</a>`
+                            });
+                            marker.addListener("click", function () {
+                                infoWindow.open(map, marker);
+                            })
+
+
+
+                            // Checking for custom icon
+                            if (jobsite.profits > 0 || jobsite.profits < 0) {
+                                // Setting icon image
+                                marker.setIcon("http://maps.google.com/mapfiles/kml/paddle/grn-circle.png");
+                            }
+                    
+
+
                     }
-                })
+                    return geoCodeCallback;
+                }
+
+
             }
+
         })
 
         // geocoder.geocode ( {
@@ -108,6 +145,8 @@ function initMap() {
         //         })
         //     }
         // })
+
+
     }
 
     codeAddress()
