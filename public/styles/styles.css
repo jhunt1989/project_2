@@ -2,6 +2,7 @@
 
 #map {
   height: 450px;
+  border: solid 1px black;
 }
 
 html,
