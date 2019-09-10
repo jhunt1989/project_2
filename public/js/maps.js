@@ -1,7 +1,7 @@
 function initMap() {
 
     var options = {
-        zoom: 11,
+        zoom: 10,
         center: {
             lat: 39.95258,
             lng: -75.165222
@@ -107,8 +107,10 @@ function initMap() {
 
                             var infoWindow = new google.maps.InfoWindow({
                                 content: `<h3>${jobsite.name}</h3>
-                                            <h4>Contact: ${jobsite.contact}<h4>
+                                            <hr>
+                                            <h4>Contact: ${jobsite.contact}</h4>
                                             <a href="tel:${jobsite.phone}">Phone:${jobsite.phone}</a>
+                                            <br>
                                             <a href="mailto:${jobsite.email}">Email:${jobsite.email}</a>`
                             });
                             marker.addListener("click", function () {
@@ -120,7 +122,9 @@ function initMap() {
                             // Checking for custom icon
                             if (jobsite.profits > 0 || jobsite.profits < 0) {
                                 // Setting icon image
-                                marker.setIcon("http://maps.google.com/mapfiles/kml/paddle/grn-circle.png");
+                                marker.setIcon("https://i.stack.imgur.com/rU427.png");
+                            } else {
+                                marker.setIcon("https://i.stack.imgur.com/cdiAE.png");
                             }
                     
 

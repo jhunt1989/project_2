@@ -1,6 +1,15 @@
-body {
-    background-color: #E1F0AC;
-}
+body { 
+    /* The image used */
+    background-image: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full page/img(20).jpg");
+  
+    /* Full height */
+    height: 100%; 
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
 /* .container {
     display: flex;
@@ -36,12 +45,20 @@ body {
 
 #box7 {
     flex-direction: row;
+ 
 }
 
 #box8 {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    /* color: darkgoldenrod */
+}
+
+#box8-text {
+    margin-top: 20px;
+    color: maroon;
+
 }
 
 #box9 {
@@ -54,8 +71,9 @@ body {
 }
 
 #box11 {
-    background-color: #f4e1c9;
+    background-color: maroon;
     border: solid 1px black;
     padding-bottom: 20px;
+    color: whitesmoke;
 }
 

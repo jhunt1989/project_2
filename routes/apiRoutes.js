@@ -135,6 +135,21 @@ module.exports = function (app) {
     })
   })
 
+
+  app.get("/view/manager/table/customers", function (req, res) {
+    db.Customer.findAll({}).then(function (data) {
+      var customerArray = [];
+      for (i = 0; i < data.length; i++) {
+        (customerArray).push(data[i].dataValues);
+      }
+
+      var hbsObject = {
+        customers: customerArray
+      };
+      res.render("customerTableView", hbsObject);
+    })
+  })
+
   app.post("/api/jobs", function (req, res) {
 
     db.Job.create(req.body).then(function (dbJobs) {
@@ -155,6 +170,35 @@ module.exports = function (app) {
       res.json(dbSupervisors);
     });
   });
+
+  app.post("/api/customers", function (req, res) {  
+    db.Customer.create(req.body).then(function (dbCustomers) {
+      res.json(dbCustomers);
+    });
+  });
+
+
+  app.get("/api/customers/lookup/:id", function (req, res) {
+    db.Customer.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbCustomer) {
+
+      res.json(dbCustomer)
+    })
+  })
+
+
+  app.post("/api/customers/delete/:id", function (req, res){
+    db.Customer.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(rowDeleted){
+      res.json(rowDeleted);
+    })
+  })
 
   app.put("/api/foreman", function (req, res) {
 

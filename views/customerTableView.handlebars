@@ -11,37 +11,35 @@
     </div>
     <!-- Table to Display All Job Info -->
     <div class="row" id="tableBody">
-        <div class="col card">
+        <div class="col">
             <div class="table">
-                <h1>All Listed Jobsites</h1>
+                <h1>All Customers</h1>
                 <table class="table table-responsive">
                     <thead>
                         <tr>
-                            <th>Jobsite ID</th>
-                            <th>Jobsite Name</th>
+                            <th>Customer ID</th>
+                            <th>Customer's Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
                             <th>Address</th>
-                            <th>Primary Contact</th>
-                            <th>Phone Number</th>
-                            <th>E-mail</th>
-                            <th>Location Expenses</th>
-                            <th>Location Revenue</th>
-                            <th>Location Profit</th>
-                            <th>Location Created</th>
-                            <th>Location Updated</th>
+                            <th>Jobsite Acreage</th>
+                            <th>Job Description</th>
+                            <th>Price Range</th>
+                            <th>Job Created</th>
+                            <th>Last Updated</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {{#each jobsites}}
+                        {{#each customers}}
                         <tr>
                             <td>{{id}}</td>
-                            <td>{{jobsite_name}}</td>
-                            <td>{{address}}</td>
-                            <td>{{primary_contact}}</td>
-                            <td>{{phone_number}}</td>
-                            <td>{{email}}</td>
-                            <td>${{location_expenses}}</td>
-                            <td>${{location_revenue}}</td>
-                            <td>${{location_profits}}</td>
+                            <td>{{customer_name}}</td>
+                            <td>{{customer_email}}</td>
+                            <td>{{customer_phone}}</td>
+                            <td>{{customer_address}}</td>
+                            <td>{{acreage}}</td>
+                            <td>{{customer_description}}</td>
+                            <td>{{pricerange}}</td>
                             <td>{{createdAt}}</td>
                             <td>{{updatedAt}}</td>
                         </tr>

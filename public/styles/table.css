@@ -1,9 +1,13 @@
 body {
-    background-color: #E1F0AC;
+    background: url("https://mdbootstrap.com/img/Photos/Horizontal/Nature/full%20page/img%20%283%29.jpg")no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 #tableBody {
-    background-color: #f4e1c9;
+    background-color: white;
     border: solid 1px black;
     margin-top: 20px;
 }

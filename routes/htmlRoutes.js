@@ -22,30 +22,37 @@ module.exports = function (app) {
     var supervisorArray = [];
     var jobsiteArray = [];
     var jobsArray = [];
+    var customerArray = [];
     var managerObject = {
       supervisors: supervisorArray,
       jobsites: jobsiteArray,
-      jobs: jobsArray
+      jobs: jobsArray,
+      customers: customerArray
     }
 
     db.Supervisor.findAll({}).then(function (data) {
-      for (i = 0; i < data.length; i++) {
-        (supervisorArray).push(data[i].dataValues);
+      for (e = 0; e < data.length; e++) {
+        (supervisorArray).push(data[e].dataValues);
       }
       db.Jobsite.findAll({}).then(function (data2) {
-        for (j = 0; j < data2.length; j++) {
-          (jobsiteArray).push(data2[j].dataValues);
+        for (v = 0; v < data2.length; v++) {
+          (jobsiteArray).push(data2[v].dataValues);
         }
         db.Job.findAll({}).then(function (data3) {
-          for (k = 0; k < data3.length; k++) {
-            (jobsArray).push(data3[k].dataValues);
+          for (a = 0; a < data3.length; a++) {
+            (jobsArray).push(data3[a].dataValues);
           }
+          db.Customer.findAll({}).then(function(data4){
+            for (n = 0; n < data4.length; n++) {
+              (customerArray).push(data4[n].dataValues);
+            }
+          })
         })
+        setTimeout(function(){
         res.render("managerView", managerObject)
+      }, 1000)
       })
     })
-
-
 
 
     setTimeout(function () {
@@ -72,6 +79,14 @@ module.exports = function (app) {
       res.render("foremanView", hbsObject)
     });
   });
+
+
+  app.get("/view/customer", function(req, res){
+
+    res.render("customerView");
+
+  });
+
 
   // // Load example page and pass in an example by id
   // app.get("/example/:id", function (req, res) {

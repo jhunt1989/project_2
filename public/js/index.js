@@ -7,6 +7,9 @@ $(document).ready(function () {
   $(".search-jobs-row").hide();
   $(".search-jobsite-row").hide();
   $(".search-supervisor-row").hide();
+  $(".customer-info-table").hide();
+ 
+  // $("#customer-requests").hide();
 
 
   //on click event for login button
@@ -32,6 +35,13 @@ $(document).ready(function () {
     window.location.replace("/view/foreman")
 
   })
+
+  $("#customerBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("You are now going to customer view");
+    window.location.replace("/view/customer")
+  })
+
 
   //from manager view, on click to add job form
   $("#createJob").on("click", function (event) {
@@ -144,6 +154,12 @@ $(document).ready(function () {
 
   })
 
+  //from manager view, on click for view customers
+  $("#viewCustomer").on("click", function (event) {
+    event.preventDefault();
+    console.log("view list of customers");
+    window.location.replace("/view/manager/table/customers")
+  })
 
   $("#create-project").on("submit", function (event) {
     event.preventDefault();
@@ -212,6 +228,29 @@ $(document).ready(function () {
       }
     )
   })
+
+  //Customer requesting a job POST route from /view/customer/
+  $("#project-request").on("submit", function (event) {
+    event.preventDefault();
+
+    var newCustomer = {
+      customer_name: $("#customer-name").val().trim(),
+      customer_email: $("#customer-email").val().trim(),
+      customer_phone: $("#customer-phone").val().trim(),
+      customer_address: $("#customer-address").val().trim(),
+      acreage: $("#customer-acreage").val().trim(),
+      customer_description: $("#customer-description").val().trim(),
+      pricerange: $("#customer-pricerange").val().trim()
+    }
+
+    $.ajax("/api/customers", {
+      type: "POST",
+      data: newCustomer
+    }).then(function () {
+      alert("Youre request has been submitted!")
+      location.reload()
+    })
+  });
 
 
   $("#project-info").on("submit", function (event) {
@@ -375,6 +414,56 @@ $(document).ready(function () {
     })
 
   })
+
+  $(".customer-lookup").on("click", function (event) {
+    event.preventDefault();
+    console.log($(this).val())
+    $(".customer-info-table").show();
+    var customer = {
+      id: $(this).val()
+    }
+
+
+ 
+
+    $.ajax("/api/customers/lookup/" + customer.id, {
+      type: "GET"
+    }).then(function (customerInfo) {
+      console.log(customerInfo);
+      $("#cust-name").text(customerInfo.customer_name);
+      $("#cust-address").text(customerInfo.customer_address);
+      $("#cust-acreage").text(customerInfo.acreage);
+      $("#cust-description").text(customerInfo.customer_description);
+      $("#cust-pricerange").text(customerInfo.pricerange);
+      $("#cust-daterequested").text(customerInfo.createdAt);
+      $("#cust-phone").text(customerInfo.customer_phone);
+    })
+
+  })
+
+  $(".customer-delete").on("click", function (event) {
+    event.preventDefault();
+    console.log($(this).val());
+    var deletedCustomer = {
+      id: $(this).val()
+    }
+
+    var confirmDelete = confirm("Are you sure you want to delete this customer?");
+
+    if (confirmDelete) {
+      $.ajax("/api/customers/delete/" + deletedCustomer.id, {
+        type: "POST"
+      }).then(function (response) {
+        alert("Youre request has been submitted!")
+        location.reload()
+
+      })
+    };
+  //   setTimeout(function(){
+  //   location.reload()
+  // }, 500)
+  })
+
 
 
 
