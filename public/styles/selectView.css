@@ -44,5 +44,25 @@ body {
     margin-bottom: 20px;
 }
 
+#managerBtn {
+    border: solid 1px black;
+}
+
+#foremanBtn {
+    border: solid 1px black;
+}
+
+#customerBtn {
+    border: solid 1px black;
+}
+
+@media (max-width: 991px) {
+    #selViewImg {
+        opacity: 0;
+    }
+    #box8-text {
+        color: black;
+    }
+}
 
 

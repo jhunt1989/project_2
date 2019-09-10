@@ -14,10 +14,11 @@ body {
 
 #managerBtn {
     margin-top: 20px;
+    border: solid 1px white;
 }
 
 @media (min-width: 1200px) {
-    .container {
+     .container {
         max-width: 1180px;
     }
 }
