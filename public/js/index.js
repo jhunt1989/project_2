@@ -7,6 +7,8 @@ $(document).ready(function () {
   $(".search-jobs-row").hide();
   $(".search-jobsite-row").hide();
   $(".search-supervisor-row").hide();
+  $(".customer-info-table").hide();
+ 
   // $("#customer-requests").hide();
 
 
@@ -32,6 +34,12 @@ $(document).ready(function () {
     console.log("you are now in foreman view");
     window.location.replace("/view/foreman")
 
+  })
+
+  $("#customerBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("You are now going to customer view");
+    window.location.replace("/view/customer")
   })
 
 
@@ -410,10 +418,13 @@ $(document).ready(function () {
   $(".customer-lookup").on("click", function (event) {
     event.preventDefault();
     console.log($(this).val())
-
+    $(".customer-info-table").show();
     var customer = {
       id: $(this).val()
     }
+
+
+ 
 
     $.ajax("/api/customers/lookup/" + customer.id, {
       type: "GET"
