@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/styles/managerView.css">
- <script
+<script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzpotGxOz77z1sqb0HSZM_vCb_BSPdZ1Y&libraries=places&callback=initAutocomplete"
     async defer></script>
+
+
 <div class="container text-center">
     <div class="row">
         <div class="col">
@@ -10,42 +12,50 @@
     </div>
     <!-- Buttons for Manager Options -->
     <div class="row" id="btnBox">
-        <div class="col-4">
+
+
+        <div class="col-md-4">
             <button id="createJob" type="button" class="btn">Create Job</button>
         </div>
 
-        <div class="col-4">
-            <button id="addJobsite" type="button" class="btn">Add Jobsite</button>
+        <div class="col-md-4">
+            <button id="addJobsite" type="button" class="btn">Create Jobsite</button>
         </div>
 
-        <div class="col-4">
-            <button id="addSuper" type="button" class="btn">Add Supervisor</button>
+        <div class="col-md-4">
+            <button id="addSuper" type="button" class="btn">Create Supervisor</button>
         </div>
 
 
-        <div class="col-4">
+        <div class="col-md-3">
             <button id="viewJobs" type="button" class="btn">View Jobs</button>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-3">
             <button id="viewJobsites" type="button" class="btn">View Jobsites</button>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-3">
             <button id="viewSuper" type="button" class="btn">View Supervisors</button>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-3">
+            <button id="viewCustomer" type="button" class="btn">View Customers</button>
+        </div>
+
+
+        <div class="col-md-4">
             <button id="searchJobs" type="button" class="btn">Search Jobs</button>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-4">
             <button id="searchSites" type="button" class="btn">Search Jobsites</button>
         </div>
 
-        <div class="col-4">
+        <div class="col-md-4">
             <button id="searchSuper" type="button" class="btn">Search Supervisors</button>
         </div>
+
 
 
     </div>
@@ -109,10 +119,12 @@
                     {{!-- <input type="text" id="jobsite-address">
                     <br> --}}
                     <span id="locationField">
-                        <input id="jobsite-address" placeholder="Enter your address" onFocus="geolocate()" type="text" />
+                        <input id="jobsite-address" placeholder="Enter your address" onFocus="geolocate()"
+                            type="text" />
                     </span>
                     {{!-- Input for Jobsite Primary Contact Person --}}
-                    <label for="jobsite-primarycontact">Who is the primary point of contact for this Jobsite?</label>
+                    <label for="jobsite-primarycontact">Who is the primary point of contact for this
+                        Jobsite?</label>
                     <input type="text" id="jobsite-primarycontact">
                     <br>
                     {{!-- Input for Jobsite Phone Number --}}
@@ -142,7 +154,8 @@
                     <input type="text" id="supervisor-name">
                     <br>
                     {{!-- Input for Supervisor Specialties --}}
-                    <label for="supervisor-specialties">What are some of the specialties of this supervisor?</label>
+                    <label for="supervisor-specialties">What are some of the specialties of this
+                        supervisor?</label>
                     <input type="text" id="supervisor-specialties">
                     <br>
 
@@ -282,6 +295,76 @@
         </div>
     </div>
 
+
+    {{!-- Customer Requests --}}
+    <div class="row customer-requests-row" id="customer-requests">
+        <div class="col">
+            <div id="customer-req-table">
+                <div class="table-dark color-white">
+                    <h3>Customer Requests</h3>
+                    <table class="table table-responsive">
+                        {{#each customers}}
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description:</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th>View More</th>
+                                <th>Delete Job</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{customer_name}}</td>
+                                <td>{{customer_description}}</td>
+                                <td>{{customer_address}}</td>
+                                <td>{{customer_email}}</td>
+                                <td>
+                                    <button class="customer-lookup btn btn-success" value="{{id}}">View Info</button>
+                                </td>
+                                <td>
+                                    <button class="customer-delete btn btn-warning" value="{{id}}">Delete Job</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {{/each}}
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="customer-info-table">
+                <div class="table-dark color-white">
+                    <h3>Selected Customer Information</h3>
+                    <table class="table table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>Address</th>
+                                <th>Acreage</th>
+                                <th>Job Description</th>
+                                <th>Price Range</th>
+                                <th>Date Requested</th>
+                                <th>Phone #</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="cust-name"></td>
+                                <td id="cust-address"></td>
+                                <td id="cust-acreage"></td>
+                                <td id="cust-description"></td>
+                                <td id="cust-pricerange"></td>
+                                <td id="cust-daterequested"></td>
+                                <td id="cust-phone"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -310,7 +393,7 @@
         // When the user selects an address from the drop-down, populate the
         // address fields in the form.
         // autocomplete.addListener('place_changed');
-    }  
+    }
 
     function geolocate() {
         if (navigator.geolocation) {

@@ -107,8 +107,10 @@ function initMap() {
 
                             var infoWindow = new google.maps.InfoWindow({
                                 content: `<h3>${jobsite.name}</h3>
-                                            <h4>Contact: ${jobsite.contact}<h4>
+                                            <hr>
+                                            <h4>Contact: ${jobsite.contact}</h4>
                                             <a href="tel:${jobsite.phone}">Phone:${jobsite.phone}</a>
+                                            <br>
                                             <a href="mailto:${jobsite.email}">Email:${jobsite.email}</a>`
                             });
                             marker.addListener("click", function () {

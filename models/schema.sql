@@ -23,3 +23,8 @@ INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, emai
 INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, email, location_expenses, location_revenue, location_profits) VALUES ("Franklin Square", "456 Main Street Phila, PA 19128", "Tim Evans", "215-555-7895", "tevans@gmail.com", 4000, 9000, 5000);
 INSERT INTO jobsites (jobsite_name, address, primary_contact, phone_number, email, location_expenses, location_revenue, location_profits) VALUES ("LaSalle College", "789 Main Street Phila, PA 19128", "Larry Johnson", "484-555-7895", "ljohnson@gmail.com", 5000, 10000, 5000);
 SELECT * FROM jobsites;
+
+INSERT INTO customers (customer_name, customer_email, customer_phone, customer_address, acreage, customer_description, pricerange) VALUES ("Evan Cleary", "evanjcleary@gmail.com", "610-299-9918", "2", "I need my grass mowed", "$0-$1,000");
+INSERT INTO customers (customer_name, customer_email, customer_phone, customer_address, acreage, customer_description, pricerange) VALUES ("James Johnson", "jjohnson@gmail.com", "610-717-2929", "4", "I need flowers planted", "$1,000-$2,500");
+INSERT INTO customers (customer_name, customer_email, customer_phone, customer_address, acreage, customer_description, pricerange) VALUES ("Sallie Mays", "salliemay@gmail.com", "610-555-2191", "3", "I need some hardscaping done", "$5,000 - $7,500");
+SELECT * FROM customers;
