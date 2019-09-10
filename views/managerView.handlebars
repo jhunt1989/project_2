@@ -3,29 +3,96 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzpotGxOz77z1sqb0HSZM_vCb_BSPdZ1Y&libraries=places&callback=initAutocomplete"
     async defer></script>
 
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #24355C">
+    <div class="container">
+        <a class="navbar-brand" href="#">Manager tools</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<div class="container text-center">
-    <div class="row">
-        <div class="col">
-            <h3>What would you like to do?</h3>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Create!
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="createJob" href="#">Create job</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addJobsite" href="#">Create jobsite</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addSuper" href="#">Create supervisor</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        View!
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" id="viewJobs" href="#">View jobs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="viewJobsites" href="#">View jobsites</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="viewSuper" href="#">View supervisors</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="viewCustomer" href="#">View customers</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Search!
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="searchJobs" href="#">Search jobs</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="searchSites" href="#">Search jobsites</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="searchSuper" href="#">Search supervisors</a>
+                    </div>
+                </li>
+
+
+            </ul>
         </div>
     </div>
-    <!-- Buttons for Manager Options -->
-    <div class="row" id="btnBox">
-
-
-        <div class="col-md-4">
-            <button id="createJob" type="button" class="btn">Create Job</button>
+</nav>
+<br>
+<div class="container text-center">
+    <div class="jumbotron text-light jumbotron-fluid" style="background-color: #24355C">
+        <div class="container" style="background-color: #24355C">
+            <h1 class="display-4">Manager's Dashboard</h1>
+            <p class="lead">Welcome Manager! You have many tools at your disposal here. Click on the top-right options
+                to get started!</p>
         </div>
+    </div>
 
+    <!-- Buttons for Manager Options -->
+    {{!-- <div class="row" id="btnBox"> --}}
+
+
+    {{!-- <div class="col-md-4">
+            <button id="createJob" type="button" class="btn">Create Job</button>
+        </div> --}}
+    {{!-- 
         <div class="col-md-4">
             <button id="addJobsite" type="button" class="btn">Create Jobsite</button>
         </div>
 
         <div class="col-md-4">
             <button id="addSuper" type="button" class="btn">Create Supervisor</button>
-        </div>
-
+        </div> --}}
+    {{!-- 
 
         <div class="col-md-3">
             <button id="viewJobs" type="button" class="btn">View Jobs</button>
@@ -54,17 +121,17 @@
 
         <div class="col-md-4">
             <button id="searchSuper" type="button" class="btn">Search Supervisors</button>
-        </div>
+        </div> --}}
 
 
 
-    </div>
+    {{!-- </div> --}}
     <br>
 
 
     {{!-- CREATE NEW JOB TABLE --}}
     <div class="row add-item">
-        <div class="col text-center" id="create-project">
+        <div class="col text-center card" id="create-project" style="background-color: #24355C">
             <!-- Create new Job Section (Opens on click triggering a .show() for #create-project) -->
             <h2>Create New Job</h2>
             <form id="create-project">
@@ -105,7 +172,7 @@
 
     {{!-- ADD JOBSITE TABLE --}}
     <div class="row add-jobsite">
-        <div class="col text-center" id="create-jobsite">
+        <div class="col text-center card" id="create-jobsite" style="background-color: #24355C">
             <h2>Create a new Jobsite</h2>
             <form id="create-jobsite">
 
@@ -143,7 +210,7 @@
 
     {{!-- ADD SUPERVISOR TABLE --}}
     <div class="row add-supervisor">
-        <div class="col text-center" id="create-supervisor">
+        <div class="col text-center card" id="create-supervisor" style="background-color: #24355C">
             <h2>Create a new Supervisor</h2>
             <form id="create-supervisor">
 
@@ -168,7 +235,7 @@
 
     {{!-- SEARCH SUPERVISOR TABLE --}}
     <div class="row search-supervisor-row" id="search-supervisor">
-        <div class="col-3 text-center" id="search-supervisor-col">
+        <div class="col-3 text-center card text-light" id="search-supervisor-col" style="background-color: #24355C">
             <form id="search-supervisor-form">
                 <div class="form-group">
                     <label for="supervisor-search"> Which supervisor would you like to search?</label>
@@ -183,7 +250,7 @@
                 <button type="submit">Search Supervisor</button>
             </form>
         </div>
-        <div class="col-9 supervisor-table">
+        <div class="col-9 supervisor-table card text-light" style="background-color: #24355C">
             <table class="table">
                 <thead>
                     <tr>
@@ -212,7 +279,7 @@
 
     {{!--  SEARCH JOBSITE TABLE --}}
     <div class="row search-jobsite-row" id="search-jobsite">
-        <div class="col-3 text-center" id="search-jobsite-col">
+        <div class="col-3 text-center card text-light" id="search-jobsite-col" style="background-color: #24355C">
             <form id="search-jobsite-form">
                 <div class="form-group">
                     <label for="jobsite-search"> Which jobsite would you like to search?</label>
@@ -227,7 +294,7 @@
                 <button type="submit">Search Jobsite</button>
             </form>
         </div>
-        <div class="col-9 jobsite-table">
+        <div class="col-9 jobsite-table card text-light" style="background-color: #24355C">
             <table class="table">
                 <thead>
                     <tr>
@@ -254,7 +321,7 @@
     <br>
     {{!--  SEARCH JOBS TABLE --}}
     <div class="row search-jobs-row" id="search-jobs">
-        <div class="col-3 text-center" id="search-jobs-col">
+        <div class="col-3 text-center card text-light" id="search-jobs-col" style="background-color: #24355C">
             <form id="search-jobs-form">
                 <div class="form-group">
                     <label for="jobs-search"> Which jobsite would you like to search?</label>
@@ -269,7 +336,7 @@
                 <button type="submit">Search Jobs</button>
             </form>
         </div>
-        <div class="col-9 jobs-table">
+        <div class="col-9 jobs-table card text-light" style="background-color: #24355C">
             <table class="table">
                 <thead>
                     <tr>
@@ -295,12 +362,14 @@
         </div>
     </div>
 
-
+    <br>
+    <br>
+    <br>
     {{!-- Customer Requests --}}
     <div class="row customer-requests-row" id="customer-requests">
-        <div class="col">
+        <div class="card col" style="height: 50%; background-color: #24355C">
             <div id="customer-req-table">
-                <div class="table-dark color-white">
+                <div class="text-white" style="background-color: #24355C">
                     <h3>Customer Requests</h3>
                     <table class="table table-responsive">
                         {{#each customers}}
@@ -336,8 +405,8 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="customer-info-table">
-                <div class="table-dark color-white">
+            <div class="customer-info-table" style="background-color: #24355C">
+                <div class="color-white text-white" style="background-color: #24355C">
                     <h3>Selected Customer Information</h3>
                     <table class="table table-responsive">
                         <thead>

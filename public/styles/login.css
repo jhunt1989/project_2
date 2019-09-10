@@ -1,7 +1,16 @@
 body {
-    background-color: #E1F0AC;
-}
+    background-color: rgba(0, 0, 0, 0.9);
+    background-image: url("../images/cool-background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+  }
 
+  
 .container {
     display: flex;
     flex-wrap: wrap;

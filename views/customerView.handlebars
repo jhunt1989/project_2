@@ -1,63 +1,69 @@
-{{!-- <link rel="stylesheet" href="/styles/foreman.css"> --}}
+<link rel="stylesheet" href="/styles/customer.css">
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzpotGxOz77z1sqb0HSZM_vCb_BSPdZ1Y&libraries=places&callback=initAutocomplete"
     async defer></script>
 <div class="container text-center">
-    <div class="row">
-        <div class="col">
-            <h2>Welcome to our Customer Portal!</h2>
-            <h3>We're honored to have you.</h3>
-            <h5>Please input your requested job information below, and we will get back to you shortly!</h5>
+    <div class="jumbotron jumbotron-fluid" style="background-color:#2F4F4F">
+        <div class="container">
+            <h1 class="display-4">Welcome!</h1>
+            <p class="lead">We're honored to have you as a potential customer. Please input your information for the job you'd like to request
+                and we will get back to you shortly!</p>
         </div>
     </div>
 
+    <br>
     <div class="row">
 
-        <!-- Enter Job Data Form -->
-        <div class="col" id="project-request-form">
-            <form id="project-request">
-                <div class="form-group">
-                    {{!-- Your name --}}
-                    <label for="customer-name">Please enter your name</label>
-                    <input type="text" id="customer-name">
-                    <br>
-                    {{!-- Your email --}}
-                    <label for="customer-email">Please enter your e-mail</label>
-                    <input type="text" id="customer-email">
-                    <br>
-                    {{!-- Your phone number --}}
-                    <label for="customer-phone">Please enter your phone number</label>
-                    <input type="text" id="customer-phone">
-                    <br>
-                    {{!-- Customer Address --}}
-                    <label for="customer-address">What is your address?</label>
-                    <input type="text" id="customer-address">
-                    <br>
-                    {{!-- Customer Acreage --}}
-                    <label for="customer-acreage">What is the acreage of your property?</label>
-                    <input type="text" id="customer-acreage">
-                    <br>
-                    {{!-- Description of job --}}
-                    <label for="customer-description">Please enter a little bit about the work you'd like done</label>
-                    <input type="text" id="customer-description">
-                    <br>
-                    {{!-- Desired Price --}}
-                    <label for="customer-pricerange">What is your desired price range for this job?</label>
-                    <select data-placeholder="" class="form-control user-selection" id="customer-pricerange">
-                        <option value="$0-$1,000">$0 - $1,000</option>
-                        <option value="$1,000-$2,500">$1,000 - $2,500</option>
-                        <option value="$2,500-$5,000">$2,500 - $5,000</option>
-                        <option value="$5,000-$7,500">$5,000 - $7,500</option>
-                        <option value="$7,500-$10,000">$7,500 - $10,000</option>
-                        <option value="$10,000+">$10,000+</option>
-                    </select>
-                </div>
-                {{!-- Submit Info  --}}
-                <button type="submit">Input Your Request</button>
-            </form>
+        <div class="col-md-12 mb-4 project-request-form">
+            <div class="card text-white text-center" style="background-color: #2F4F4F">
+                <form id="project-request">
+                    <div class="form-group">
+                        {{!-- Your name --}}
+                        <label for="customer-name">Please enter your name</label>
+                        <input type="text" id="customer-name">
+                        <br>
+                        {{!-- Your email --}}
+                        <label for="customer-email">Please enter your e-mail</label>
+                        <input type="text" id="customer-email">
+                        <br>
+                        {{!-- Your phone number --}}
+                        <label for="customer-phone">Please enter your phone number</label>
+                        <input type="text" id="customer-phone">
+                        <br>
+                        {{!-- Customer Address --}}
+                        <label for="customer-address">What is your address?</label>
+                        <input type="text" id="customer-address">
+                        <br>
+                        {{!-- Customer Acreage --}}
+                        <label for="customer-acreage">What is the acreage of your property?</label>
+                        <input type="text" id="customer-acreage">
+                        <br>
+                        {{!-- Description of job --}}
+                        <label for="customer-description">Please enter a little bit about the work you'd like
+                            done</label>
+                        <input type="text" id="customer-description">
+                        <br>
+                        {{!-- Desired Price --}}
+                        <label for="customer-pricerange">What is your desired price range for this job?</label>
+                        <select data-placeholder="" class="form-control user-selection text-center"
+                            id="customer-pricerange">
+                            <option value="$0-$1,000">$0 - $1,000</option>
+                            <option value="$1,000-$2,500">$1,000 - $2,500</option>
+                            <option value="$2,500-$5,000">$2,500 - $5,000</option>
+                            <option value="$5,000-$7,500">$5,000 - $7,500</option>
+                            <option value="$7,500-$10,000">$7,500 - $10,000</option>
+                            <option value="$10,000+">$10,000+</option>
+                        </select>
+                    </div>
+                    {{!-- Submit Info  --}}
+                    {{!-- <button type="submit">Input Your Request</button> --}}
+                    <button class="btn btn-secondary btn-rounded" type="submit"><i class="far fa-clone left"></i>
+                        Submit your project request</button>
+                </form>
+            </div>
         </div>
-
     </div>
+
 
 </div>
 <script>
