@@ -230,9 +230,9 @@ module.exports = function (app) {
       }).then(function (results) {
         // console.log(results);
         // console.log(results.dataValues !== "null");
-        // console.log(results.dataValues.id);
+        // console.log(typeof results.dataValues.id);
         // console.log(results.dataValues.length);
-        if (results.dataValues !== null) {
+        if (results) {
           // save keys on the session object to access throughout your routes
           req.session.loggedin = true;
           req.session.username = username;
