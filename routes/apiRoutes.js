@@ -8,6 +8,12 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/logins", function(req, res){
+    db.Login.findAll({}).then(function(dbLogins){
+      res.json(dbLogins)
+    })
+  })
+
   app.get("/api/jobs/:id", function (req, res) {
     db.Job.findOne({
       where: {
