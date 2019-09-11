@@ -14,8 +14,8 @@ var path = require("path");
 var connection = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "Liam0515!",
-  database: "login"
+  password: "Seaisle1!",
+  database: "project2_db"
 });
 
 // Middleware
@@ -59,11 +59,13 @@ if (process.env.NODE_ENV === "test") {
 }
 
 app.post('/auth', function(request, response) {
+
+
   var username = request.body.username;
   var password = request.body.password;
   if (username && password) {
     connection.query(
-      'SELECT * FROM accounts WHERE username = ? AND password = ?',
+      'SELECT * FROM logins WHERE username = ? AND password = ?',
       [username, password],
       function(error, results, fields) {
         if (results.length > 0) {
