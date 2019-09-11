@@ -11,12 +11,12 @@ var session = require("express-session");
 var bodyParser = require("body-parser");
 var path = require("path");
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Seaisle1!",
-  database: "project2_db"
-});
+// var connection = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "Seaisle1!",
+//   database: "project2_db"
+// });
 
 // Middleware
 app.use(
@@ -58,32 +58,32 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-app.post('/auth', function(request, response) {
+// app.post('/auth', function(request, response) {
 
 
-  var username = request.body.username;
-  var password = request.body.password;
-  if (username && password) {
-    connection.query(
-      'SELECT * FROM logins WHERE username = ? AND password = ?',
-      [username, password],
-      function(error, results, fields) {
-        if (results.length > 0) {
+//   var username = request.body.username;
+//   var password = request.body.password;
+  // if (username && password) {
+  //   connection.query(
+  //     'SELECT * FROM logins WHERE username = ? AND password = ?',
+  //     [username, password],
+  //     function(error, results, fields) {
+  //       if (results.length > 0) {
           // save keys on the session object to access throughout your routes
-          request.session.loggedin = true;
-          request.session.username = username;
-          response.redirect('/view');
-        } else {
-          response.send('Incorrect Username and/or Password!');
-        }
-        response.end();
-      }
-    );
-  } else {
-    response.send('Please enter Username and Password!');
-    response.end();
-  }
-});
+//           request.session.loggedin = true;
+//           request.session.username = username;
+//           response.redirect('/view');
+//         } else {
+//           response.send('Incorrect Username and/or Password!');
+//         }
+//         response.end();
+//       }
+//     );
+//   } else {
+//     response.send('Please enter Username and Password!');
+//     response.end();
+//   }
+// });
 
 // just an extra route to to test request session data
 app.get('/anotherTest', isAuthenticated, function(request, response) {
