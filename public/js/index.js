@@ -12,34 +12,31 @@ $(document).ready(function () {
   // $("#customer-requests").hide();
 
 
-  //on click event for login button
-  $("#loginBtn").on("click", function (event) {
-    event.preventDefault();
-    console.log("you have successfully logged in");
-    window.location.replace("/view")
-
-  })
+  // on click event for login button
+  // $("#loginBtn").on("click", function(event) {
+  //   event.preventDefault();
+  //   $.post("/auth")
+  // });
 
   //from select view page, on click for manager button
   $("#managerBtn").on("click", function (event) {
     event.preventDefault();
     console.log("you are now in manager view");
-    window.location.replace("/view/manager")
-
-  })
+    window.location.assign("/view/manager");
+  });
 
   //from select view page, on click for foreman button
   $("#foremanBtn").on("click", function (event) {
     event.preventDefault();
     console.log("you are now in foreman view");
-    window.location.replace("/view/foreman")
+    window.location.assign("/view/foreman")
 
   })
 
   $("#customerBtn").on("click", function (event) {
     event.preventDefault();
     console.log("You are now going to customer view");
-    window.location.replace("/view/customer")
+    window.location.assign("/view/customer")
   })
 
 
@@ -53,10 +50,7 @@ $(document).ready(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").hide();
-
-
-
-  })
+  });
 
   //from manager view, on click to add jobsite form
   $("#addJobsite").on("click", function (event) {
@@ -134,7 +128,7 @@ $(document).ready(function () {
   $("#viewJobs").on("click", function (event) {
     event.preventDefault();
     console.log("view list of all jobs");
-    window.location.replace("/view/manager/table")
+    window.location.assign("/view/manager/table")
 
   })
 
@@ -142,7 +136,7 @@ $(document).ready(function () {
   $("#viewJobsites").on("click", function (event) {
     event.preventDefault();
     console.log("view list of all jobsites");
-    window.location.replace("/view/manager/table/jobsites")
+    window.location.assign("/view/manager/table/jobsites")
 
   })
 
@@ -150,7 +144,7 @@ $(document).ready(function () {
   $("#viewSuper").on("click", function (event) {
     event.preventDefault();
     console.log("view list of supervisors");
-    window.location.replace("/view/manager/table/supervisors")
+    window.location.assign("/view/manager/table/supervisors")
 
   })
 
@@ -158,7 +152,7 @@ $(document).ready(function () {
   $("#viewCustomer").on("click", function (event) {
     event.preventDefault();
     console.log("view list of customers");
-    window.location.replace("/view/manager/table/customers")
+    window.location.assign("/view/manager/table/customers")
   })
 
   $("#create-project").on("submit", function (event) {
