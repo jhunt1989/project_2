@@ -21,14 +21,12 @@
     <div class="container" id="box4"></div> --}}
     <br>
     <div class="container" id="box5">
-      <form id="loginPage" class="loginForm" name="loginForm" action="" method="POST">
+      <form id="loginPage" class="loginForm" name="loginForm" action="auth" method="POST">
         <h3 id="signInHeader">Sign into your account</h3>
-        <input id="username" type="text" placeholder="Email">
-        <input id="password" type="password" placeholder="Password">
+        <input id="username" type="text" placeholder="Username" name="username">
+        <input id="password" type="password" placeholder="Password" name="password">
         <br>
         <button id="loginBtn" type="submit" class="btn">Log In</button>
-        {{!-- <h5 id="noAcctHeader">Don't have an account?</h5>
-        <button id="newAcctBtn" type="button" class="btn">Click Here to Create One!</button> --}}
       </form>
     </div>
     <br>
