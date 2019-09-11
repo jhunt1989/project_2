@@ -13,6 +13,10 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/home", function (req, res){
+    res.render("homeView");
+  })
+
 
   app.get("/view", function (req, res) {
     res.render("selectView");
