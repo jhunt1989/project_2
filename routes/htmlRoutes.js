@@ -17,7 +17,6 @@ module.exports = function (app) {
     res.render("homeView");
   })
 
-
   app.get("/view", function (req, res) {
     res.render("selectView");
   });
@@ -58,14 +57,11 @@ module.exports = function (app) {
       })
     })
 
-
     setTimeout(function () {
       console.log("data loaded!")
     }, 2000)
-
     // db.Jobsite.findall({})
-
-
+ 
   });
 
   app.get("/view/foreman", function (req, res) {
