@@ -163,6 +163,12 @@ module.exports = function (app) {
     });
   });
 
+  app.post("/api/logins", function (req, res) {
+    db.Login.create(req.body).then(function(dbLogins){
+      res.json(dbLogins);
+    });
+  });
+
   app.post("/api/customers", function (req, res) {
     db.Customer.create(req.body).then(function (dbCustomers) {
       res.json(dbCustomers);

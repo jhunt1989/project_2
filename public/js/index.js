@@ -8,6 +8,7 @@ $(document).ready(function () {
   $(".search-jobsite-row").hide();
   $(".search-supervisor-row").hide();
   $(".customer-info-table").hide();
+  $(".add-user-login").hide();
  
   // $("#customer-requests").hide();
 
@@ -50,6 +51,7 @@ $(document).ready(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
   });
 
   //from manager view, on click to add jobsite form
@@ -63,6 +65,7 @@ $(document).ready(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
 
 
   })
@@ -78,9 +81,27 @@ $(document).ready(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
+
 
 
   })
+
+  $("#addUser").on("click", function(event){
+    event.preventDefault();
+    console.log("show form to create a new user");
+
+    $("#create-supervisor").hide();
+    $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+    $(".add-user-login").show();
+
+  })
+
+
 
 
   $("#searchJobs").on("click", function (event) {
@@ -93,6 +114,8 @@ $(document).ready(function () {
     $(".search-jobs-row").show();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
+
 
 
   })
@@ -107,6 +130,8 @@ $(document).ready(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").show();
     $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
+
 
 
   })
@@ -121,6 +146,8 @@ $(document).ready(function () {
     $(".search-jobs-row").hide();
     $(".search-jobsite-row").hide();
     $(".search-supervisor-row").show();
+    $(".add-user-login").hide();
+
 
   })
 
@@ -222,6 +249,29 @@ $(document).ready(function () {
       }
     )
   })
+
+  $("#create-user").on("submit", function(event){
+    event.preventDefault();
+    console.log("i've been clicked");
+
+    var newUser = {
+      username: $("#user-username").val().trim(),
+      password: $("#user-password").val().trim(),
+      email: $("#user-email").val().trim(),
+      birthday: $("#user-birthdate").val().trim()
+    }
+
+    $.ajax("/api/logins", {
+      type: "POST",
+      data: newUser
+    }).then(
+      function () {
+        console.log("Created a new user");
+        location.reload();
+      }
+    )
+  });
+
 
   //Customer requesting a job POST route from /view/customer/
   $("#project-request").on("submit", function (event) {

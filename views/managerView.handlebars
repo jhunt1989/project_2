@@ -26,6 +26,8 @@
                         <a class="dropdown-item" id="addJobsite" href="#">Create jobsite</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" id="addSuper" href="#">Create supervisor</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" id="addUser" href="#">Create user</a>
                     </div>
                 </li>
 
@@ -228,6 +230,37 @@
 
                 </div>
                 <button type="submit">Create Supervisor</button>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    {{!-- ADD User TABLE --}}
+    <div class="row add-user-login">
+        <div class="col text-center card" id="create-login" style="background-color: #24355C">
+            <h2>Create a new User</h2>
+            <form id="create-user">
+
+                <div class="form-group">
+
+                    {{!-- Input for Supervisor name --}}
+                    <label for="user-username">What is the username of this user?</label>
+                    <input type="text" id="user-username">
+                    <br>
+                    {{!-- {!-- Input for Supervisor name --}}
+                    <label for="user-password">What is the password for this user?</label>
+                    <input type="text" id="user-password">
+                    <br>
+                    {{!-- {!-- Input for Supervisor name --}}
+                    <label for="user-email">What is the email for this user?</label>
+                    <input type="text" id="user-email">
+                    <br>
+                    {{!-- {!-- Input for Supervisor name --}}
+                    <label for="user-birthdate">What is the birthdate for this user?</label>
+                    <input type="text" id="user-birthdate">
+                    <br>
+                </div>
+                <button type="submit">Create User</button>
             </form>
         </div>
     </div>
