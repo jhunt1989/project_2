@@ -2,9 +2,9 @@
 
 ## Proposal 
 
-Project Team 
-    Evan
-    Jess
+Project Team : 
+    Evan,
+    Jess,
     Rick
 
 We plan to build a Project Management system. This system will be used for a landscaping company to track their revenues/expenses based on each job they perform. These will be sortable by job-sites (assuming these job-sites are recurring) and will also be sortable by the foremen running the job site. These will provide further analytics for the business owner.
