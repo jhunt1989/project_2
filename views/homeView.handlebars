@@ -1,4 +1,232 @@
 <link rel="stylesheet" href="/styles/home.css">
+
+<!-- Navigation -->
+<nav class="navbar navbar-light bg-light">
+    <form class="form-inline">
+        <button class="btn btn-outline-success" type="button" id="employee-login">Employee Login</button>
+    </form>
+</nav>
+
+
+<header>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-2 text-center">BrightView</h1>
+            <p class="lead text-center">Where we bring our stylistic approach to every job, big or small!.</p>
+        </div>
+    </div>
+
+    {{!-- <div class="container">
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Your Match!</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card" style="width: 18rem;">
+                            <img class="match-image" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="match-title"></h5>
+                                <p class="match-text"></p>
+                                <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> --}}
+
+
+    <div class="container">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <!-- Slide One - Set the background image for this slide in the line below -->
+                <div class="carousel-item active text-dark"
+                    style="background-image: url('https://images.freeimages.com/images/large-previews/e8d/garden-1171472.jpg');  height:400px;width:100%;">
+                    <div class="font-weight-bold carousel-caption d-none d-block">
+                        <h3 class="display-4 font-weight-bold">Landscaping</h3>
+
+                    </div>
+                </div>
+                <!-- Slide Two - Set the background image for this slide in the line below -->
+                <div class="carousel-item text-dark"
+                    style="background-image: url('https://images.freeimages.com/images/large-previews/754/swimming-pool-2-1390927.jpg'); height:400px;width:100%;">
+                    <div class="carousel-caption d-none d-block text-dark font-weight-bold">
+                        <h3 class="font-weight-bold display-4">Hardscaping</h3>
+
+                    </div>
+                </div>
+                <!-- Slide Three - Set the background image for this slide in the line below -->
+                <div class="carousel-item text-dark"
+                    style="background-image: url('https://images.freeimages.com/images/large-previews/060/the-ponds-1387575.jpg'); height:400px;width:100%;">
+                    <div class="carousel-caption d-none d-block">
+                        <h3 class="font-weight-bold display-4">Aquascaping</h3>
+
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</header>
+<br>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-6">
+            <button class="btn btn-success btn-lg btn-block font-weight-bold" id="customerBtn" style="height:100px;">Request
+                Appointment</button>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    
+
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="our-job-main">
+
+                <div class="job-front">
+                    <img src="https://picsum.photos/id/518/110/110" class="img-fluid" />
+                    <h3>Landscaping</h3>
+                    <p>Lawn Maintenance and weed removal</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="our-job-main">
+
+                <div class="job-front">
+                    <img src="https://picsum.photos/id/385/110/110" class="img-fluid" />
+                    <h3>Aquascaping</h3>
+                    <p>Ponds and Fountains</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="our-job-main">
+
+                <div class="job-front">
+                    <img src="https://picsum.photos/id/276/110/110" class="img-fluid" />
+                    <h3>Hardcaping</h3>
+                    <p>Patios and Retaining Walls</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="our-job-main">
+
+                <div class="job-front">
+                    <img src="https://picsum.photos/id/580/110/110" class="img-fluid" />
+                    <h3>Property Management</h3>
+                    <p>Risk assessment and Utilities</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="our-job-main">
+
+                <div class="job-front">
+                    <img src="https://picsum.photos/id/652/110/110" class="img-fluid" />
+                    <h3>Gardening</h3>
+                    <p>Planting and procurement of exotics</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="our-job-main">
+
+                <div class="job-front">
+                    <img src="https://picsum.photos/id/56/110/110" class="img-fluid" />
+                    <h3>Fancyscaping</h3>
+                    <p>That extra touch of class</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{!-- <link rel="stylesheet" href="/styles/home.css">
 <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzpotGxOz77z1sqb0HSZM_vCb_BSPdZ1Y&libraries=places&callback=initAutocomplete"
     async defer></script>

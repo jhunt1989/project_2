@@ -13,7 +13,17 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/home", function (req, res) {
+
+  // app.get("/login", function (req, res) {
+  //   db.Job.findAll({}).then(function (dbExamples) {
+  //     res.render("index", {
+  //       msg: "Welcome!",
+  //       examples: dbExamples
+  //     });
+  //   });
+  // });
+
+  app.get("/home", function (req, res){
     res.render("homeView");
   })
 
@@ -67,28 +77,28 @@ module.exports = function (app) {
 
   app.get("/view/foreman", function (req, res) {
     var projectArray = [];
-    var taskArray = [];
+    // var taskArray = [];
     db.Job.findAll({}).then(function (data) {
       // console.log(data[0].dataValues);
       for (i = 0; i < data.length; i++) {
         (projectArray).push(data[i].dataValues);
       }
-      db.Tasks.findAll({}).then(function (data2) {
-        // console.log(data[0].dataValues);
-        for (j = 0; j < data2.length; j++) {
-          (taskArray).push(data2[j].dataValues);
-        }
+      // db.Tasks.findAll({}).then(function (data2) {
+      //   // console.log(data[0].dataValues);
+      //   for (j = 0; j < data2.length; j++) {
+      //     (taskArray).push(data2[j].dataValues);
+      //   }
 
         // console.log(dataArray)
         var hbsObject = {
           projects: projectArray,
-          tasks: taskArray
+          // tasks: taskArray
         };
 
         res.render("foremanView", hbsObject)
       });
     });
-  });
+  // });
 
   // app.get("/view/foreman", function (req, res) {
   //   db.Job.findAll({}).then(function (data) {

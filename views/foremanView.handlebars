@@ -142,17 +142,24 @@
                         <th>Task ID</th>
                         <th>Task Name</th>
                         <th>Task Description</th>
-                        <th>Status</th>
+                        <th>Completed?</th>
+                        <th>Mark Status</th>
+                        <th>Delete Task</th>
 
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="tasks-table">
+                    {{!-- {{#each tasks}} --}}
                     <tr>
-                        <td id="tasks-id"></td>
-                        <td id="tasks-name"></td>
-                        <td id="tasks-description"></td>
-                        <td id="tasks-status">Incomplete</td>
+
+                        <td id="tasks-id">{{id}}</td>
+                        <td id="tasks-name">{{task_name}}</td>
+                        <td id="tasks-description">{{task_description}}</td>
+                        <td id="tasks-status">{{task_status}}</td>
+                        <td id="toggle-task-td"></td>
+                        <td id="delete-task-td"></td>
                     </tr>
+                    {{!-- {{/each}} --}}
                 </tbody>
             </table>
         </div>
