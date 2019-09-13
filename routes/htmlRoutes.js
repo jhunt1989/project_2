@@ -13,7 +13,7 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/home", function (req, res){
+  app.get("/home", function (req, res) {
     res.render("homeView");
   })
 
@@ -45,15 +45,15 @@ module.exports = function (app) {
           for (a = 0; a < data3.length; a++) {
             (jobsArray).push(data3[a].dataValues);
           }
-          db.Customer.findAll({}).then(function(data4){
+          db.Customer.findAll({}).then(function (data4) {
             for (n = 0; n < data4.length; n++) {
               (customerArray).push(data4[n].dataValues);
             }
           })
         })
-        setTimeout(function(){
-        res.render("managerView", managerObject)
-      }, 1000)
+        setTimeout(function () {
+          res.render("managerView", managerObject)
+        }, 1000)
       })
     })
 
@@ -61,29 +61,63 @@ module.exports = function (app) {
       console.log("data loaded!")
     }, 2000)
     // db.Jobsite.findall({})
- 
+
   });
 
+
   app.get("/view/foreman", function (req, res) {
+    var projectArray = [];
+    var taskArray = [];
     db.Job.findAll({}).then(function (data) {
       // console.log(data[0].dataValues);
-      var projectArray = [];
       for (i = 0; i < data.length; i++) {
         (projectArray).push(data[i].dataValues);
       }
-      // console.log(dataArray)
-      var hbsObject = {
-        projects: projectArray
-      };
+      db.Tasks.findAll({}).then(function (data2) {
+        // console.log(data[0].dataValues);
+        for (j = 0; j < data2.length; j++) {
+          (taskArray).push(data2[j].dataValues);
+        }
 
-      res.render("foremanView", hbsObject)
+        // console.log(dataArray)
+        var hbsObject = {
+          projects: projectArray,
+          tasks: taskArray
+        };
+
+        res.render("foremanView", hbsObject)
+      });
     });
   });
 
+  // app.get("/view/foreman", function (req, res) {
+  //   db.Job.findAll({}).then(function (data) {
+  //     // console.log(data[0].dataValues);
+  //     var projectArray = [];
+  //     for (i = 0; i < data.length; i++) {
+  //       (projectArray).push(data[i].dataValues);
+  //     }
+  //     // console.log(dataArray)
+  //     var hbsObject = {
+  //       projects: projectArray
+  //     };
 
-  app.get("/view/customer", function(req, res){
+  //     res.render("foremanView", hbsObject)
+  //   });
+  // });
+
+
+  app.get("/view/customer", function (req, res) {
 
     res.render("customerView");
+
+  });
+
+  // Get Request for 
+
+  app.get("/view/foreman/tasklist", function (req, res) {
+
+    res.render("taskView");
 
   });
 

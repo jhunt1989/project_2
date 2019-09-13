@@ -8,8 +8,15 @@ module.exports = function (app) {
     });
   });
 
-  app.get("/api/logins", function(req, res){
-    db.Login.findAll({}).then(function(dbLogins){
+  // --------------------tasklist get request------------------------------------------------------------------------------
+  app.get("/api/tasklists", function (req, res) {
+    db.Tasks.findAll({}).then(function (dbTasks) {
+      res.json(dbTasks);
+    });
+  });
+
+  app.get("/api/logins", function (req, res) {
+    db.Login.findAll({}).then(function (dbLogins) {
       res.json(dbLogins)
     })
   })
@@ -31,6 +38,16 @@ module.exports = function (app) {
       }
     }).then(function (dbJobs) {
       res.json(dbJobs);
+    });
+  });
+
+  app.get("/api/tasklists/search/:id", function (req, res) {
+    db.Tasks.findAll({
+      where: {
+        project_id: req.params.id
+      }
+    }).then(function (dbTasks) {
+      res.json(dbTasks);
     });
   });
 
@@ -164,7 +181,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/logins", function (req, res) {
-    db.Login.create(req.body).then(function(dbLogins){
+    db.Login.create(req.body).then(function (dbLogins) {
       res.json(dbLogins);
     });
   });
@@ -172,6 +189,14 @@ module.exports = function (app) {
   app.post("/api/customers", function (req, res) {
     db.Customer.create(req.body).then(function (dbCustomers) {
       res.json(dbCustomers);
+    });
+  });
+
+  // --------------------POST REQUEST FOR TASKLIST--------------------------------
+
+  app.post("/api/tasklists", function (req, res) {
+    db.Tasks.create(req.body).then(function (dbTasks) {
+      res.json(dbTasks);
     });
   });
 
