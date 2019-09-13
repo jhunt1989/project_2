@@ -8,8 +8,10 @@ $(document).ready(function () {
   $(".search-jobsite-row").hide();
   $(".search-supervisor-row").hide();
   $(".customer-info-table").hide();
+  $(".foreman-project-report").hide();
+  $(".add-task").hide();
   $(".add-user-login").hide();
- 
+
   // $("#customer-requests").hide();
 
 
@@ -87,7 +89,7 @@ $(document).ready(function () {
 
   })
 
-  $("#addUser").on("click", function(event){
+  $("#addUser").on("click", function (event) {
     event.preventDefault();
     console.log("show form to create a new user");
 
@@ -148,7 +150,38 @@ $(document).ready(function () {
     $(".search-supervisor-row").show();
     $(".add-user-login").hide();
 
+  })
 
+  //foreman on click to submit report
+  $("#createProjectReport").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to submit project report")
+
+    $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
+    $(".foreman-project-report").show();
+    $(".add-task").hide();
+  })
+
+  //foreman on click to add to task list
+  $("#addTask").on("click", function (event) {
+    event.preventDefault();
+    console.log("show form to create a task list")
+
+    $("#create-project").hide();
+    $("#create-jobsite").hide();
+    $("#create-supervisor").hide();
+    $(".search-jobs-row").hide();
+    $(".search-jobsite-row").hide();
+    $(".search-supervisor-row").hide();
+    $(".add-user-login").hide();
+    $(".foreman-project-report").hide();
+    $(".add-task").show();
   })
 
   //from manager view, on click view jobs button
@@ -250,7 +283,30 @@ $(document).ready(function () {
     )
   })
 
-  $("#create-user").on("submit", function(event){
+  //tasklist AJAX call--------------------------------------------------------
+  $("#create-task").on("submit", function (event) {
+    event.preventDefault();
+    console.log("i've been clicked");
+
+    var newTask = {
+      task_name: $("#task-name").val().trim(),
+      task_description: $("#task-description").val(),
+      project_id: $("#id-project-task").val()
+    };
+
+    $.ajax("/api/tasklists/", {
+      type: "POST",
+      data: newTask
+    }).then(
+      function () {
+        console.log("Created a new task");
+        location.reload();
+      }
+    )
+  })
+
+
+  $("#create-user").on("submit", function (event) {
     event.preventDefault();
     console.log("i've been clicked");
 
@@ -459,6 +515,27 @@ $(document).ready(function () {
 
   })
 
+
+  $("#search-tasks-form").on("submit", function (event) {
+    event.preventDefault();
+    console.log("You've searched for Job ID: " + $("#tasks-search").val());
+    var tasksSearch = {
+      id: parseInt($("#tasks-search").val())
+    }
+
+    $.ajax("/api/tasklists/search/" + tasksSearch.id, {
+      type: "GET"
+    }).then(function (searchResult) {
+      console.log(searchResult);
+      $("#tasks-id").text(searchResult.id);
+      $("#tasks-name").text(searchResult.task_name);
+      $("#tasks-description").text(searchResult.task_description);
+      $("#tasks-status").text(searchResult.status);
+
+    })
+
+  })
+
   $(".customer-lookup").on("click", function (event) {
     event.preventDefault();
     console.log($(this).val())
@@ -468,7 +545,7 @@ $(document).ready(function () {
     }
 
 
- 
+
 
     $.ajax("/api/customers/lookup/" + customer.id, {
       type: "GET"
@@ -503,9 +580,9 @@ $(document).ready(function () {
 
       })
     };
-  //   setTimeout(function(){
-  //   location.reload()
-  // }, 500)
+    //   setTimeout(function(){
+    //   location.reload()
+    // }, 500)
   })
 
 

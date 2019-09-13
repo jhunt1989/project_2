@@ -1,19 +1,26 @@
 body {
-    background-color: rgba(0, 0, 0, 0.9);
-    background-image: url("https://images.pexels.com/photos/1227648/pexels-photo-1227648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: whitesmoke;
-  }
-
-#project-info-form {
-    background-color: darkslategrey;
-    border: solid 0.25px black;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    color: burlywood;
+  background: url("https://images.pexels.com/photos/1227648/pexels-photo-1227648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background-color: rgba(0, 0, 0, 0.9);
+  background-image: url("https://images.pexels.com/photos/1227648/pexels-photo-1227648.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+  background-repeat: no-repeat; */
+  /* min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: whitesmoke; */
 }
+
+/* 
+#add-task-form,
+#project-info-form {
+  background-color: darkslategrey;
+  border: solid 0.25px black;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  color: burlywood;
+} */
