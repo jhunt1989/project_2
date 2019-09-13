@@ -223,6 +223,16 @@ module.exports = function (app) {
     })
   });
 
+  app.post("/api/tasklists/delete/:id", function (req, res) {
+    db.Tasks.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(data){
+      res.json(data);
+    })
+  })
+
   app.put("/api/foreman", function (req, res) {
     db.Job.update(req.body, {
       where: {
@@ -232,6 +242,17 @@ module.exports = function (app) {
       res.json(dbProjInfo);
     });
   });
+
+  app.put("/api/tasklists", function (req, res) {
+    db.Tasks.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbTasks){
+      res.json(dbTasks)
+    })
+  })
+
 
   app.put("/api/jobsites", function (req, res) {
     db.Jobsite.update(req.body, {

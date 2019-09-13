@@ -184,6 +184,13 @@ $(document).ready(function () {
     $(".add-task").show();
   })
 
+  $("#employee-login").on("click", function (event) {
+    event.preventDefault();
+    console.log("view login page");
+    window.location.assign("/")
+  })
+
+
   //from manager view, on click view jobs button
   $("#viewJobs").on("click", function (event) {
     event.preventDefault();
@@ -523,18 +530,107 @@ $(document).ready(function () {
       id: parseInt($("#tasks-search").val())
     }
 
+    $("#tasks-table").html("")
+
     $.ajax("/api/tasklists/search/" + tasksSearch.id, {
       type: "GET"
     }).then(function (searchResult) {
       console.log(searchResult);
-      $("#tasks-id").text(searchResult.id);
-      $("#tasks-name").text(searchResult.task_name);
-      $("#tasks-description").text(searchResult.task_description);
-      $("#tasks-status").text(searchResult.status);
+
+      for (i = 0; i < searchResult.length; i++) {
+        var tableRow = $("<tr>");
+
+        var idTd = $("<td>");
+        var nameTd = $("<td>");
+        var descrTd = $("<td>");
+        var statusTd = $("<td>");
+        var toggleTd = $("<td>");
+        var deleteTd = $("<td>");
+        var trueOrFalse = "";
+        if (searchResult[i].status === false) {
+          trueOrFalse = "Incomplete"
+        } else {
+          trueOrFalse = "Completed"
+        }
+
+        $(idTd).text(searchResult[i].id);
+        $(nameTd).text(searchResult[i].task_name);
+        $(descrTd).text(searchResult[i].task_description);
+        $(statusTd).text(trueOrFalse);
+        $(toggleTd).html(`<button class="mark-complete btn btn-warning" value="${searchResult[i].id}" id="mark-status">Mark Complete</button>`)
+        $(deleteTd).html(`<button class="delete-task btn btn-danger" value="${searchResult[i].id}" id="delete-task">Delete Task</button>`)
+        // $(toggleTd).addClass("toggle-task")
+
+        $(tableRow).append(idTd);
+        $(tableRow).append(nameTd);
+        $(tableRow).append(descrTd);
+        $(tableRow).append(statusTd);
+        $(tableRow).append(toggleTd);
+        $(tableRow).append(deleteTd);
+
+        $("#tasks-table").append(tableRow)
+
+        
+      }
+      $(".mark-complete").on("click", function (event){
+        event.preventDefault();
+        console.log("I've been clicked");
+        console.log($(this).val())
+        var taskID = $(this).val();
+
+        var taskStatus = {
+          status: true,
+          id: taskID
+        }
+    
+        $.ajax("/api/tasklists", {
+          type: "PUT",
+          data: taskStatus
+        }).then(function () {
+          alert("You updated this task!!");
+          // calculateData();
+        })
+
+
+      })
+
+      $(".delete-task").on("click", function (event){
+        event.preventDefault();
+        console.log("I've been clicked to delete");
+        console.log($(this).val());
+
+        var deletedTask = {
+          id: $(this).val()
+        }
+    
+        var confirmDeleteTask = confirm("Are you sure you want to delete this customer?");
+    
+        if (confirmDeleteTask) {
+          $.ajax("/api/tasklists/delete/" + deletedTask.id, {
+            type: "POST"
+          }).then(function (response) {
+            alert("Youre request has been submitted!")
+            location.reload()
+    
+          })
+        };
+
+
+
+
+      })
+      // $("#tasks-id").text(searchResult[0].id);
+      // $("#tasks-name").text(searchResult[0].task_name);
+      // $("#tasks-description").text(searchResult[0].task_description);
+      // $("#tasks-status").text(searchResult[0].status);
 
     })
 
   })
+
+
+  
+
 
   $(".customer-lookup").on("click", function (event) {
     event.preventDefault();
