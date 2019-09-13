@@ -28,6 +28,13 @@ $(document).ready(function () {
     window.location.assign("/view/manager");
   });
 
+  //to return to view page from both manager and foreman views
+  $("#viewBtn").on("click", function (event) {
+    event.preventDefault();
+    console.log("you are now in select view");
+    window.location.assign("/view");
+  });
+
   //from select view page, on click for foreman button
   $("#foremanBtn").on("click", function (event) {
     event.preventDefault();
