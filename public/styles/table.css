@@ -7,14 +7,25 @@ body {
 }
 
 #tableBody {
-    background-color: white;
+    background-color: #012758;
     border: solid 1px black;
     margin-top: 20px;
+    padding-top: 15px;
 }
 
 #managerBtn {
+    background-color: #012758;
     margin-top: 20px;
     border: solid 1px white;
+}
+
+#jobSiteTable1 {
+    background-color: #c5e8fb;
+}
+
+#jobSiteTable2 {
+    background-color: #2486bb;
+    color: white;
 }
 
 @media (min-width: 1200px) {
