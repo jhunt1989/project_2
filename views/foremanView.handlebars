@@ -1,11 +1,16 @@
+<link href="https://fonts.googleapis.com/css?family=Black+Ops+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Quantico&display=swap" rel="stylesheet">
+{{!-- <script src="https://use.fontawesome.com/d7f740ca8e.js"></script> --}}
 <link rel="stylesheet" href="/styles/foreman.css">
 
 {{!-- <div class="container text-center"> --}}
 
 {{!-- FOREMAN NAVBAR  --}}
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #2E8B57">
+<nav class="navbar p-3 navbar-expand-lg navbar-dark border border-dark" style="background-image: linear-gradient( dimgrey,seagreen)">
     <div class="container">
-        <a class="navbar-brand" href="#">Foreman Tools</a>
+        {{!-- <i class="fas fa-globe"></i> --}}
+        <a class="navbar-brand text-center" href="#" style="color: #282828"> Project Management System</a>    
+        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -16,14 +21,27 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Create!
+                        Reports
                     </a>
                     <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" id="createProjectReport" href="#">Project Reports</a>
-                        <div class="dropdown-divider"></div>
+                        {{!-- <div class="dropdown-divider"></div>
                         <a class="dropdown-item" id="addTask" href="#">Project Task List</a>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> --}}
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Projects
+                    </a>
+                    <!-- Here's the magic. Add the .animate and .slide-in classes to your .dropdown-menu and you're all set! -->
+                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                        {{!-- <a class="dropdown-item" id="createProjectReport" href="#">Project Reports</a>
+                        <div class="dropdown-divider"></div> --}}
+                        <a class="dropdown-item" id="addTask" href="#">Project Task List</a>
+                        {{!-- <div class="dropdown-divider"></div> --}}
                     </div>
                 </li>
             </ul>
@@ -34,7 +52,7 @@
 
 <br>
 <div class="col-lg-12 text-center">
-    <button id="viewBtn" type="button" class="btn btn-success">Return</button>
+    <button id="viewBtn" type="button" class="btn btn-dark">Return Home</button>
 </div>
 
 <br>
@@ -42,9 +60,9 @@
 {{!-- FOREMAN DASHBOARD --}}
 
 <div class="container text-center">
-    <div class="jumbotron text-light jumbotron-fluid" style="background-color: #2E8B57">
-        <div class="container" style="background-color: #2E8B57">
-            <h1 class="display-4">Foreman's Dashboard</h1>
+    <div class="jumbotron text-light jumbotron-fluid border border-dark rounded-lg" style="background-image: linear-gradient( dimgrey,seagreen)">
+        <div class="container" style="background-image: linear-gradient( dimgrey,seagreen)">
+            <h1 class="display-4 f-dash">Foreman's Dashboard</h1>
             <p class="lead">Welcome Foreman! You have many tools at your disposal here. Click on the top-right
                 options
                 to get started!</p>
@@ -54,9 +72,9 @@
 
     {{!-- PROJECT REPORT FORM  --}}
 
-    <div class="row foreman-project-report">
+    <div class="row text-light foreman-project-report">
         <!-- Enter Job Data Form -->
-        <div class="col text-center card" id="project-info-form" style="background-color: #2E8B57">
+        <div class="col text-center card" id="project-info-form" style="background-image: linear-gradient( dimgrey,seagreen)">
             <h3>Input Job Information</h3>
             <form id="project-info">
                 <div class="form-group">
@@ -94,7 +112,7 @@
 
     {{!-- ADD TASK FORM --}}
     <div class="row add-task">
-        <div class="col text-center card" id="add-task-form" style="background-color: #2E8B57">
+        <div class="col text-center card" id="add-task-form" style="background-image: linear-gradient( dimgrey,seagreen)">
             <h2>Create Project Task List</h2>
             <form id="create-task">
 
@@ -125,7 +143,7 @@
 
 
     <div class="row search-task-row" id="search-tasks">
-        <div class="col-3 text-center card text-light" id="search-task-col" style="background-color: #2E8B57">
+        <div class="col-3 text-center card" id="search-task-col" style="background-image: linear-gradient( dimgrey,seagreen)">
             <form id="search-tasks-form">
                 <div class="form-group">
                     <label for="task-search"> Which project task list would you like to view?</label>
@@ -140,10 +158,10 @@
                 <button type="submit">Show Tasks</button>
             </form>
         </div>
-        <div class="col-9 tasks-table card text-light table-responsive" style="background-color: #2E8B57">
+        <div class="col-9 tasks-table card table-responsive" style="background-image: linear-gradient( dimgrey,seagreen)">
             <table class="table">
-                <thead>
-                    <tr>
+                <thead class="thead-dark">
+                    <tr class="tr-task">
                         <th>Task ID</th>
                         <th>Task Name</th>
                         <th>Task Description</th>
