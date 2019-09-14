@@ -1,12 +1,20 @@
 
     body {
-      background: url("https://i1.wp.com/sjjf.se/wp-content/uploads/2013/08/wooden-texture.jpg?resize=1024%2C576")no-repeat center center fixed;
+      
+      background: url("/images/green_leaves_PNG3654.png"),url("https://i1.wp.com/sjjf.se/wp-content/uploads/2013/08/wooden-texture.jpg?resize=1024%2C576")no-repeat center center fixed;
       -webkit-background-size: cover;
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
     }
 
+    #carousel-container {
+      margin-top: 10%
+    }
+
+    #leaves-images {
+      z-index: 0;
+    }
     .jumbotron {
       background: url("https://i1.wp.com/sjjf.se/wp-content/uploads/2013/08/wooden-texture.jpg?resize=1024%2C576")no-repeat center center fixed;
       -webkit-background-size: cover;
@@ -28,11 +36,11 @@
 
 .our-job-main
 {
-  background-color: darkgreen;
+  /* background-color: darkgreen; */
   color:white;
 	width:100%;
 	height:auto;
-	border-bottom:5px #323233 solid;
+	/* border-bottom:5px #323233 solid; */
 	/* background:#fff; */
 	text-align:center;
 	border-radius:10px;
@@ -44,7 +52,7 @@
 
 .job-front
 {
-  background-color: darkgreen;
+  /* background-color: darkgreen; */
   color:white;
 	width:100%;
 	height:auto;
