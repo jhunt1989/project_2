@@ -1,4 +1,7 @@
+
+
 function initMap() {
+    $(document).ready(function(){ 
 
     var options = {
         zoom: 10,
@@ -155,8 +158,8 @@ function initMap() {
 
     codeAddress()
 
+})
 }
-
 
      // {
         //     coords:{ lat: 40.018740, lng: -75.208980 },
